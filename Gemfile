@@ -31,6 +31,7 @@ end
 
 group :development do
   gem "web-console", "4.2.0"
+  gem "annotate", "~> 3.2"
 end
 
 group :test do
@@ -59,4 +60,4 @@ gem "dockerfile-rails", ">= 1.6", :group => :development
 
 gem "redis", "~> 5.0"
 
-gem "rubocop", "~> 1.59"
+# gem "rubocop", "~> 1.59"
