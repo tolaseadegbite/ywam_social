@@ -1,29 +1,86 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg bg-white py-3 mb-3">
+  <div class="container">
+    <%= link_to dashboard_path, class: "navbar-brand" do %>
+      <%= image_tag 'ywam-logo.png', size: '38', class: 'rounded-2' %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+        <div class="input-group">
+          <span class="input-group-text bg-transparent" id="basic-addon1"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control" placeholder="Search..." aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link bg-secondary bg-opacity-25 py-2 px-3 rounded-2 me-3" href="#"><i class="bi bi-chat-left-text-fill"></i></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link bg-secondary bg-opacity-25 py-2 px-3 rounded-2 me-3" href="#"><i class="bi bi-gear-fill"></i></a>
+        </li>
+
+        <li class="nav-item position-relative">
+          <a class="nav-link bg-secondary bg-opacity-25 py-2 px-3 rounded-2 me-3" href="#">
+            <i class="bi bi-bell-fill"></i>
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <span class="position-absolute start-100 translate-middle bg-danger border border-light rounded-circle" style="left:72% !important; top:5% !important; padding: 0.35rem !important;">
+          <span class="visually-hidden">New alerts</span>
+        </span>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= image_tag 'avatar1.jpeg', size: '38', class: 'rounded-2' %>
+          </a>
+          <ul class="dropdown-menu dropdown-animation dropdown-menu-end small me-md-n3 shadow px-3 py-3" style="width: 290px">
+            <div class="profile-dropdown">
+              <div class="dropdown-header d-flex flex-row">
+                <div class="avatar">
+                  <%= image_tag 'avatar1.jpeg', size: '55', class: 'rounded-circle' %>
+                </div>
+                <div class="info mt-2 ms-3">
+                  <h5 class="m-0 fw-bold text-black">Tolase Adegbite</h5>
+                  <p class="text-muted">Staff</p>
+                </div>
+              </div>
+              <%= link_to 'View profile', '#', class: 'btn btn-primary-soft btn-sm w-100 rounded-0 py-2  dropdown-item text-center' %>
+
+              <%= link_to '#', class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
+                <i class="bi bi-gear me-1"></i>
+                Settings & Privacy
+              <% end %>
+
+              <%= link_to '#', class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
+                <i class="bi bi-info-circle me-1"></i>
+                Support
+              <% end %>
+
+              <%= link_to '#', class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
+                <i class="bi bi-card-list me-1"></i>
+                Documentation
+              <% end %>
+
+              <li><hr class="dropdown-divider"></li>
+              <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
+                <i class="bi bi-power me-1"></i>
+                Sign Out
+              <% end %>
+              <li><hr class="dropdown-divider"></li>
+
+              <div class="dropdown-footer d-flex justify-content-between align-items-center">
+                <span>Mode:</span>
+                <span class="bg-primary py-2 px-3 rounded"><i class="bi bi-sun text-white"></i></span>
+                <span><i class="bi bi-moon-stars"></i></span>
+                <span><i class="bi bi-circle-half"></i></span>
+              </div>
+            </div>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+
       </ul>
     </div>
   </div>

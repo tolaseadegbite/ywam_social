@@ -7,6 +7,11 @@
 
 
 // custom css
+
+// html {
+//     font-size: 15px;
+// }
+
 body {
     background-color: #eff2f6;
     font-family: 'Open Sans', sans-serif;
@@ -15,6 +20,7 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Roboto', sans-serif;
+    font-weight: 900;
 }
 
 h1 {
@@ -22,8 +28,23 @@ h1 {
     font-weight: 900;
 }
 
+// h5 {
+//     font-weight: 400;
+// }
+
+.vr {
+    display: inline-block;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    width: var(--bs-border-width);
+    min-height: 1em;
+    background-color: currentcolor;
+    opacity: 0.25;
+}
+
 p {
     font-family: 'Open Sans', sans-serif;
+    color: #676a79;
 }
 
 a {
@@ -31,15 +52,28 @@ a {
 }
 
 // form
-.mb-3 {
+.form-control, .form-select {
+    // border-color: #f8bbff;
+    border-width: 2px;
+}
 
-    .form-control, .form-select {
-        // border-color: #f8bbff;
-        border-width: 2px;
+.form-control:focus, .form-select:valid:focus {
+    box-shadow: none;
+    border: 2px solid #000000;
+}
+
+// navbar
+.btn-primary-soft {
+    color: #0f6fec;
+    background-color: rgba(15, 111, 236, 0.1);
+    &:hover, &:focus {
+        background-color: #0f6fec;
+        color: #ffffff !important;
     }
-    
-    .form-control:focus, .form-select:valid:focus {
-        box-shadow: none;
-        border: 2px solid #000000;
+}
+
+.dropdown-item {
+    &:hover, &:focus {
+        color: #0f6fec;
     }
 }
