@@ -1,0 +1,17 @@
+<%= form_with model: [:host, listing] do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :max_guests %>
+    <%= f.number_field :max_guests %>
+
+    <% if f.object.new_record? %>
+        <%= f.label :address_line_1 %>
+        <%= f.text_field :address_line_1 %>
+
+        <%= f.label :address_line_2 %>
+        <%= f.text_field :address_line_2 %>
+    <% end %>
+
+    <%= f.button :submit %>
+<% end %>

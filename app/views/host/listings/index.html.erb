@@ -1,0 +1,7 @@
+<h1>Your Listings</h1>
+
+<ul>
+    <% @listings.each do |listing| %>
+        <li><%= link_to listing.title, host_listing_path(listing) %> | <%= link_to 'delete', host_listing_path(listing), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> | <%= listing.status %></li>
+    <% end %>
+</ul>

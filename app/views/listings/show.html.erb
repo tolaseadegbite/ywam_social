@@ -1,0 +1,60 @@
+<main class="container">
+    <div class="row g-4 mb-3">
+        
+        <!-- render sidebar -->
+        <%= render 'shared/sidebar' %>
+        <!-- sidebar ends -->
+
+        <!-- main content start -->
+        <div class="col-md-8 col-lg-6 vstack gap-4 bg-white border">
+            <!-- main content start -->
+            <div class="h-100 py-3">
+                <!-- header starts -->
+                <%= link_to sanitize("&larr; Back to listings"), listings_path %>
+                <div class="p-3 header">
+                    <h1 class="h2 card-title">The nicest apartment in Cape Town</h1>
+                    <small class="d-flex justify-content-between align-items-center mt-2 fw-bold">
+                        <div>
+                            <i class="bi bi-star-fill"></i>
+                            3 reviews |
+                            <i class="bi bi-geo-alt"></i>
+                            Fish Hoek, Cape Town, South Africa
+                        </div>
+                        <div>
+                            <i class="bi bi-share"></i>
+                            Share
+                            <i class="bi bi-download me-2"></i>
+                            Share
+                        </div>
+                    </small>
+                </div>
+                <!-- header ends -->
+                <!-- listing image starts -->
+                <div class="mb-4">
+                    <%= image_tag 'apartment1.jpg', class: 'listing-show-img rounded-1' %>
+                </div>
+                <!-- listing image ends -->
+
+                <!-- listing body starts -->
+                <div class="row listing-body">
+                    <div class="col-md-8">
+                        <h3 class="h4 card-title mb-3" style="font-weight: 400;">Entire rental suite hosted by Tolase</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam expedita, velit odit dolores vitae saepe porro facere, numquam delectus natus hic nisi quidem corporis eligendi. Suscipit sint recusandae illo impedit!
+                            Nemo amet illo praesentium. Quibusdam quod quis, temporibus debitis ab sunt neque assumenda eligendi natus iure sed dolor minima excepturi esse? Provident error nisi officiis illo sunt hic, at nesciunt.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="fw-medium">$36 / hr</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam expedita, velit odit dolores vitae saepe porro facere, numquam delectus natus hic nisi quidem corporis eligendi. Suscipit sint recusandae illo impedit!
+                            Nemo amet illo praesentium. Quibusdam quod quis, temporibus debitis ab sunt neque assumenda eligendi natus iure sed dolor minima excepturi esse? Provident error nisi officiis illo sunt hic, at nesciunt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--  main content ends -->
+        </div>
+        <!-- main content ends -->
+    </div>
+</main>
