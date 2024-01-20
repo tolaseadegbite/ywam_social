@@ -32,6 +32,15 @@ class Listing < ApplicationRecord
   validates :title, presence: true
   validates :max_guests, :max_guests, numericality: { greater_than: 0, less_than: 101 }
   belongs_to :host, class_name: 'User'
-  enum status: [:draft, :published, :archived]
-  enum listing_type: [:cabin, :farm, :apartment, :condo, :hut, :yurt, :treehouse, :trailer]
+
+  enum status: { draft: 0, published: 1, archived: 2 }
+  enum listing_type: { cabin: 0, farm: 1, apartment: 2, condo: 3, hut: 4, yurt: 5, treehouse: 6, trailer: 7 }
+
+  has_many :rooms, dependent: :destroy
+
+  scope :published, -> { where(status: :published) }
+
+  def address
+    "#{address_line_1} #{address_line_2} #{city} #{country}"
+  end
 end

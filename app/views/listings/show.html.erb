@@ -12,7 +12,7 @@
                 <!-- header starts -->
                 <%= link_to sanitize("&larr; Back to listings"), listings_path %>
                 <div class="p-3 header">
-                    <h1 class="h2 card-title">The nicest apartment in Cape Town</h1>
+                    <h1 class="h2 card-title"><%= @listing.title %></h1>
                     <small class="d-flex justify-content-between align-items-center mt-2 fw-bold">
                         <div>
                             <i class="bi bi-star-fill"></i>
@@ -38,7 +38,7 @@
                 <!-- listing body starts -->
                 <div class="row listing-body">
                     <div class="col-md-8">
-                        <h3 class="h4 card-title mb-3" style="font-weight: 400;">Entire rental suite hosted by Tolase</h2>
+                        <h3 class="h4 card-title mb-3" style="font-weight: 400;">Entire rental suite hosted by <%= @listing.host.username %></h2>
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam expedita, velit odit dolores vitae saepe porro facere, numquam delectus natus hic nisi quidem corporis eligendi. Suscipit sint recusandae illo impedit!
                             Nemo amet illo praesentium. Quibusdam quod quis, temporibus debitis ab sunt neque assumenda eligendi natus iure sed dolor minima excepturi esse? Provident error nisi officiis illo sunt hic, at nesciunt.

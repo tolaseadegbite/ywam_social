@@ -12,82 +12,47 @@
             <!-- row starts -->
             <div class="row">
                 <!-- individual listing starts -->
-                <div class="col-md-4">
-                    <%= link_to '#' do %>
-                        <div class="card shadow">
-                            <!-- listing image starts -->
-                            <div class="position-relative">
-                                <%= image_tag 'apartment1.jpg', class: 'card-img-top' %>
-                                <i class="bi bi-heart-fill rounded-circle btn btn-sm text-secondary btn-light position-absolute" style="right: 10px; top: 10px;"></i>
-                                
+                <% @listings.each do |listing| %>
+                    <div class="col-md-4">
+                        <%= link_to listing do %>
+                            <div class="card shadow">
+                                <!-- listing image starts -->
+                                <div class="position-relative">
+                                    <%= image_tag 'apartment1.jpg', class: 'card-img-top' %>
+                                    <i class="bi bi-heart-fill rounded-circle btn btn-sm text-secondary btn-light position-absolute" style="right: 10px; top: 10px;"></i>
+                                    
+                                </div>
+                                <!-- listing image ends -->
+                                <!-- listing info starts -->
+                                <div class="card-body pb-0">
+                                    <h6 class="card-title m-0"><%= listing.title %></h6>
+                                    <p class="card-text m-0">
+                                        <small>
+                                            <p class="m-0">
+                                                3.67
+                                                <i class="bi bi-star-fill"></i>
+                                            </p>
+                                            <p class="m-0 text-muted">
+                                                55 kilometers away
+                                            </p>
+                                            <p class="m-0 text-muted">
+                                                June 24 - Dec 31
+                                            </p>
+                                            <p class="m-0">
+                                                <span class="fw-bold">$30</span>
+                                                
+                                                <span class="text-muted">
+                                                    per night
+                                                </span>
+                                            </p>
+                                        </small>
+                                    </p>
+                                </div>
+                                <!-- listing info ends -->
                             </div>
-                            <!-- listing image ends -->
-                            <!-- listing info starts -->
-                            <div class="card-body pb-0">
-                                <h6 class="card-title m-0">A comfy studio apartment</h6>
-                                <p class="card-text m-0">
-                                    <small>
-                                        <p class="m-0">
-                                            3.67
-                                            <i class="bi bi-star-fill"></i>
-                                        </p>
-                                        <p class="m-0 text-muted">
-                                            55 kilometers away
-                                        </p>
-                                        <p class="m-0 text-muted">
-                                            June 24 - Dec 31
-                                        </p>
-                                        <p class="m-0">
-                                            <span class="fw-bold">$30</span>
-                                            
-                                            <span class="text-muted">
-                                                per night
-                                            </span>
-                                        </p>
-                                    </small>
-                                </p>
-                            </div>
-                            <!-- listing info ends -->
-                        </div>
-                    <% end %>
-                </div>
-                <!-- individual listing ends -->
-                <!-- individual listing starts -->
-                <div class="col-md-4">
-                    <%= link_to '#' do %>
-                        <div class="card">
-                            <!-- listing photo starts -->
-                            <%= image_tag 'apartment2.jpg', class: 'card-img-top' %>
-                            <!-- listing photo ends -->
-                            <!-- listing info starts -->
-                            <div class="card-body pb-0">
-                                <h6 class="card-title m-0">A comfy studio apartment</h6>
-                                <p class="card-text m-0">
-                                    <small>
-                                        <p class="m-0">
-                                            3.67
-                                            <i class="bi bi-star-fill"></i>
-                                        </p>
-                                        <p class="m-0 text-muted">
-                                            55 kilometers away
-                                        </p>
-                                        <p class="m-0 text-muted">
-                                            June 24 - Dec 31
-                                        </p>
-                                        <p class="m-0">
-                                            <span class="fw-bold">$30</span>
-                                            
-                                            <span class="text-muted">
-                                                per night
-                                            </span>
-                                        </p>
-                                    </small>
-                                </p>
-                            </div>
-                            <!-- listing info ends -->
-                        </div>
-                    <% end %>
-                </div>
+                        <% end %>
+                    </div>
+                <% end %>
                 <!-- individual listing ends -->
             </div>
             <!-- row ends -->

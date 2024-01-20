@@ -29,30 +29,30 @@
 #  fk_rails_...  (host_id => users.id)
 #
 
-one:
-  host: one
-  title: MyString
-  about: MyText
-  max_quests: 1
-  address_line_1: MyString
-  address_line_2: MyString
-  city: MyString
-  state: MyString
-  country: MyString
-  postal_code: MyString
-  lat: MyString
-  lng: MyString
+condo:
+  host: tolase
+  title: Condo Apartmant
+  about: Nicest place you'd ever stay
+  max_guests: 1
+  address_line_1: address line
+  address_line_2: address line
+  city: Ibadan
+  state: Oyo
+  country: Nigeria
+  postal_code: 233433
+  lat: 
+  lng: 
 
-two:
-  host: two
-  title: MyString
-  about: MyText
-  max_quests: 1
-  address_line_1: MyString
-  address_line_2: MyString
-  city: MyString
-  state: MyString
-  country: MyString
-  postal_code: MyString
-  lat: MyString
-  lng: MyString
+studio:
+  host: tolase
+  title: Condo Apartmant
+  about: Nicest place you'd ever stay
+  max_guests: 1
+  address_line_1: address line
+  address_line_2: address line
+  city: Ibadan
+  state: Oyo
+  country: Nigeria
+  postal_code: 233433
+  lat: 
+  lng: 

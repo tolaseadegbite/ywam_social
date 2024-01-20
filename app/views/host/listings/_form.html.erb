@@ -1,17 +1,42 @@
 <%= form_with model: [:host, listing] do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
 
-    <%= f.label :max_guests %>
-    <%= f.number_field :max_guests %>
+    <div class="mb-3">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+    </div>
 
-    <% if f.object.new_record? %>
-        <%= f.label :address_line_1 %>
-        <%= f.text_field :address_line_1 %>
+    <div class="mb-3">
+        <%= f.label :about %>
+        <%= f.text_area :about, class: 'form-control' %>
+    </div>
 
-        <%= f.label :address_line_2 %>
-        <%= f.text_field :address_line_2 %>
-    <% end %>
+    <div class="mb-3">
+        <%= f.label 'Maximum of people thaty can stay?' %>
+        <%= f.number_field :max_guests, class: 'form-control' %>
+    </div>
 
-    <%= f.button :submit %>
+    
+        <% if f.object.new_record? %>
+            <div class="mb-3">
+                <%= f.label :address_line_1 %>
+                <%= f.text_field :address_line_1, class: 'form-control' %>
+            </div>
+
+            <div class="mb-3">
+                <%= f.label :address_line_2 %>
+                <%= f.text_field :address_line_2, class: 'form-control' %>
+            </div>
+
+            <div class="mb-3">
+                <%= f.label :city %>
+                <%= f.text_field :city, class: 'form-control' %>
+            </div>
+
+            <div class="mb-3">
+                <%= f.label :country %>
+                <%= f.text_field :country, class: 'form-control' %>
+            </div>
+        <% end %>
+
+    <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>

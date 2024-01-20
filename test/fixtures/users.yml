@@ -29,3 +29,14 @@
 # below each fixture, per the syntax in the comments below
 #
 
+tolase:
+  email: tolase@example.com
+  surname: Adegbite
+  firstname: Tolase
+  username: lashe
+
+John:
+  email: john@example.com
+  surname: John
+  firstname: Doe
+  username: john_the_doe

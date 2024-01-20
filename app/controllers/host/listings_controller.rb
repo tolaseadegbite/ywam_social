@@ -22,7 +22,7 @@ class Host::ListingsController < ApplicationController
     end
 
     def show
-      
+      # @room = Room.new
     end
 
     def edit

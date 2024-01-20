@@ -1,0 +1,28 @@
+<!-- main content starts -->
+<main class="container">
+    <div class="row">
+        
+        <!-- render sidebar -->
+        <%= render 'shared/sidebar' %>
+        <!-- sidebar ends -->
+
+        <!-- main content starts -->
+        <div class="col-lg-6 vstack gap-4">
+    
+            <!-- row starts -->
+            <div class="row">
+                <!-- rooms -->
+                <div class="py-2 px-3 header bg-white d-sm-flex align-items-center text-center justify-content-sm-between rounded border mb-3">
+                    <h1 class="h4 card-title">Rooms</h1>
+                    <%= link_to '#', class: 'btn btn-primary-soft rounded' do %>
+                        <i class="bi bi-plus-lg"></i>
+                        Add rooms
+                    <% end %>
+                </div>
+            </div>
+            <!-- row ends -->
+        </div>
+        <!-- main content ends -->
+    </div>
+</main>
+<!-- main content ends -->
