@@ -1,5 +1,81 @@
-<h1><%= @listing.title %></h1>
-<p><%= @listing.max_guests %></p>
-<%= link_to 'New room', new_host_listing_room_path(@listing) %>
-<p><%= link_to 'edit', edit_host_listing_path(@listing) %></p>
-<p><%= link_to 'delete', host_listing_path(@listing), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></p>
+<% provide(:title, @listing.title) %>
+
+<main class="container my-3 bg-white">
+    <!-- main content start -->
+    <div class="h-100 py-3">
+        <!-- header starts -->
+        <%= link_to sanitize("&larr; Back to listings"), listings_path %>
+        <div class="p-3 header">
+            <h1 class="h2 card-title"><%= @listing.title %></h1>
+            <small class="d-flex justify-content-between align-items-center mt-2 fw-bold">
+                <div>
+                    <i class="bi bi-star-fill"></i>
+                    3 reviews |
+                    <i class="bi bi-geo-alt"></i>
+                    Fish Hoek, Cape Town, South Africa
+                </div>
+                <div>
+                    <%= link_to '#', class: "me-2 text-dark" do %>
+                        <i class="bi bi-share"></i>
+                        Share
+                    <% end %>
+                    <%= link_to '#', class: "text-dark" do %>
+                        <i class="bi bi-heart-fill text-danger"></i>
+                        Unfavourite
+                    <% end %>
+                    |
+                    <%= link_to edit_host_listing_path(@listing), class: "me-2 text-dark" do %>
+                        <i class="bi bi-pen"></i>
+                        Edit
+                    <% end %>
+                    <%= link_to '#', class: "me-2 text-danger" do %>
+                        <i class="bi bi-trash"></i>
+                        Delete
+                    <% end %>
+                </div>
+            </small>
+        </div>
+        <!-- header ends -->
+        <!-- listing image starts -->
+        <div class="mb-4">
+            <%= image_tag 'apartment4.jpg', class: 'listing-show-img rounded-1' %>
+        </div>
+        <!-- listing image ends -->
+
+        <!-- listing body starts -->
+        <div class="listing-body">
+            <% if @listing.about.present? %>
+                <h3 class="h4 card-title mb-3" style="font-weight: 400;">About</h3>
+
+                <p>
+                    <%= @listing.about %>
+                </p>
+            <% end %>
+
+            <!-- listing rooms -->
+            <% if @listing.rooms.present? %>
+                <h3 class="h4 card-title mb-3" style="font-weight: 400;">Rooms</h3>
+                <div class="row">
+                    <!-- loop through each rooms -->
+                    <% @rooms.each do |room| %>
+                        <div class="col-sm-6 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title h6"><%= room.room_type %>  <span class="badge text-bg-primary rounded-circle"><%= room.number_of_room %></span></h5>
+
+                                    <!-- loop through beds in a room if any-->
+                                    <% if room.beds.any? %>
+                                        <% room.beds.each do |bed| %>
+                                            <p class="card-text"><%= bed.bed_size %></p>
+                                        <% end %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <!--  main content ends -->
+</main>

@@ -8,11 +8,13 @@
 #  address_line_2 :string
 #  city           :string
 #  country        :string
+#  furniture      :integer          default(0)
 #  lat            :decimal(10, 6)
 #  listing_type   :integer          default("cabin")
 #  lng            :decimal(10, 6)
 #  max_guests     :integer          default(1)
 #  postal_code    :string
+#  size           :integer
 #  state          :string
 #  status         :integer          default("draft")
 #  title          :string           not null
@@ -35,6 +37,7 @@ class Listing < ApplicationRecord
 
   enum status: { draft: 0, published: 1, archived: 2 }
   enum listing_type: { cabin: 0, farm: 1, apartment: 2, condo: 3, hut: 4, yurt: 5, treehouse: 6, trailer: 7 }
+  enum furniture: { unfurnished: 0, furnished: 1 }
 
   has_many :rooms, dependent: :destroy
 

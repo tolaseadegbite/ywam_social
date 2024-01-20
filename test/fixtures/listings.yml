@@ -8,11 +8,13 @@
 #  address_line_2 :string
 #  city           :string
 #  country        :string
+#  furniture      :integer          default(0)
 #  lat            :decimal(10, 6)
 #  listing_type   :integer          default("cabin")
 #  lng            :decimal(10, 6)
 #  max_guests     :integer          default(1)
 #  postal_code    :string
+#  size           :integer
 #  state          :string
 #  status         :integer          default("draft")
 #  title          :string           not null

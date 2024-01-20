@@ -1,9 +1,9 @@
-<%= form_with model: [:host, listing, room], method: :post do |f| %>
+<%= form_with model: [:host, listing, room] do |f| %>
 
    
     <div class="mb-3">
         <%= f.label :room_type %>
-        <%= f.select :room_room_type, Room.room_types.keys.map{ |key| [key.humanize.upcase, key] }, { include_blank: "Select room type", selected: room.room_type }, class: "form-control rounded-0" %>
+        <%= f.select :room_type, Room.room_types.keys.map{ |key| [key.humanize.upcase, key] }, { include_blank: "Select room type", selected: room.room_type }, class: "form-control rounded-0" %>
     </div>
    
     <div class="mb-3">

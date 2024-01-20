@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_18_200621) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_230513) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_200621) do
     t.integer "listing_type", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "furniture", default: 0
+    t.integer "size"
     t.index ["host_id"], name: "index_listings_on_host_id"
   end
 

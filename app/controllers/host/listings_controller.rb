@@ -11,18 +11,18 @@ class Host::ListingsController < ApplicationController
     end
 
     def create
-        @listing = current_user.listings.build(listing_create_params)
-        if @listing.save
-            respond_to do |format|
-                format.html { redirect_to host_listing_path(@listing), notice: "Listing successfully created" }
-            end
-        else
-            render :new, status: :unprocessable_entity
-        end
+      @listing = current_user.listings.build(listing_create_params)
+      if @listing.save
+          respond_to do |format|
+              format.html { redirect_to host_listing_path(@listing), notice: "Listing successfully created" }
+          end
+      else
+          render :new, status: :unprocessable_entity
+      end
     end
 
     def show
-      # @room = Room.new
+      @rooms = @listing.rooms
     end
 
     def edit
@@ -46,15 +46,15 @@ class Host::ListingsController < ApplicationController
 
     private
 
-        def find_listing
-          @listing ||= current_user.listings.find(params[:id])
-        end
+      def find_listing
+        @listing ||= current_user.listings.find(params[:id])
+      end
 
-        def listing_create_params
-          params.require(:listing).permit(:title, :about, :max_guests, :address_line_1, :address_line_2, :city, :state, :postal_code, :country, :status, :listing_type)
-        end
+      def listing_create_params
+        params.require(:listing).permit(:title, :about, :max_guests, :address_line_1, :address_line_2, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture)
+      end
 
-        def listing_update_params
-            params.require(:listing).permit(:title, :about, :max_guests, :city, :state, :postal_code, :country, :status, :listing_type)
-        end
+      def listing_update_params
+        params.require(:listing).permit(:title, :about, :max_guests, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture)
+      end
 end

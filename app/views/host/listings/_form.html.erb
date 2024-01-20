@@ -7,7 +7,7 @@
 
     <div class="mb-3">
         <%= f.label :about %>
-        <%= f.text_area :about, class: 'form-control' %>
+        <%= f.text_area :about, placeholder: 'Give detailed description of this listing, including facilities and amenities such as Wifi etc.', class: 'form-control' %>
     </div>
 
     <div class="mb-3">
@@ -15,28 +15,48 @@
         <%= f.number_field :max_guests, class: 'form-control' %>
     </div>
 
+    <div class="mb-3">
+        <%= f.label 'Size (in sqft)' %>
+        <%= f.number_field :size, class: 'form-control' %>
+    </div>
+
     
-        <% if f.object.new_record? %>
-            <div class="mb-3">
-                <%= f.label :address_line_1 %>
-                <%= f.text_field :address_line_1, class: 'form-control' %>
-            </div>
+    <% if f.object.new_record? %>
+        <div class="mb-3">
+            <%= f.label :address_line_1 %>
+            <%= f.text_field :address_line_1, class: 'form-control' %>
+        </div>
 
-            <div class="mb-3">
-                <%= f.label :address_line_2 %>
-                <%= f.text_field :address_line_2, class: 'form-control' %>
-            </div>
+        <div class="mb-3">
+            <%= f.label :address_line_2 %>
+            <%= f.text_field :address_line_2, class: 'form-control' %>
+        </div>
 
-            <div class="mb-3">
-                <%= f.label :city %>
-                <%= f.text_field :city, class: 'form-control' %>
-            </div>
+        <div class="mb-3">
+            <%= f.label :city %>
+            <%= f.text_field :city, class: 'form-control' %>
+        </div>
 
-            <div class="mb-3">
-                <%= f.label :country %>
-                <%= f.text_field :country, class: 'form-control' %>
-            </div>
-        <% end %>
+        <div class="mb-3">
+            <%= f.label :country %>
+            <%= f.text_field :country, class: 'form-control' %>
+        </div>
+    <% end %>
+
+    <div class="mb-3">
+        <%= f.label :listing_type %>
+        <%= f.select :listing_type, Listing.listing_types.keys.map{ |key| [key.humanize.upcase, key] }, { include_blank: "Update listing type", selected: listing.listing_type }, class: "form-control rounded-0" %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :furniture %>
+        <%= f.select :furniture, Listing.furnitures.keys.map{ |key| [key.humanize.upcase, key] }, { include_blank: "Furnished or unfurnished?", selected: listing.furniture }, class: "form-control rounded-0" %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :status %>
+        <%= f.select :status, Listing.statuses.keys.map{ |key| [key.humanize.upcase, key] }, { include_blank: "Update listing status", selected: listing.status }, class: "form-control rounded-0" %>
+    </div>
 
     <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
