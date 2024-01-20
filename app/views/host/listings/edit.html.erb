@@ -1,3 +1,14 @@
-<h1>Edit Listing</h1>
+<%= provide(:title, "Edit #{@listing.title}") %>
 
-<%= render 'form', listing: @listing %>
+<main class="container my-3">
+    <%= link_to sanitize("&larr; Back to #{@listing.title}"), host_listing_path(@listing) %>
+    <!-- header -->
+    <div class="header bg-white my-4 p-3 shadow-sm rounded">
+        <h1 class="h4 card-title">Edit Listing</h1>
+    </div>
+
+    <!-- form -->
+    <div class="main-content bg-white p-3 shadow-sm rounded">
+        <%= render 'form', listing: @listing %>
+    </div>
+</main>

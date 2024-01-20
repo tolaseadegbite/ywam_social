@@ -1,7 +1,47 @@
-<h1>Your Listings</h1>
+<%= provide(:title, "Your listings") %>
 
-<ul>
-    <% @listings.each do |listing| %>
-        <li><%= link_to listing.title, host_listing_path(listing) %> | <%= link_to 'delete', host_listing_path(listing), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> | <%= listing.status %></li>
-    <% end %>
-</ul>
+<main class="container my-3">
+    <div class="py-2 px-3 header bg-white d-sm-flex align-items-center text-center justify-content-sm-between shadow-sm rounded mb-3">
+        <h1 class="h4 card-title">Your Listings</h1>
+        <%= link_to new_host_listing_path, class: 'btn btn-primary-soft rounded' do %>
+            <i class="bi bi-plus-lg"></i>
+            Add listing
+        <% end %>
+    </div>
+
+    <div class="main-content bg-white p-3 shadow-sm rounded">
+        <!-- listings table -->
+        <div class="table-wrapper table-responsive">
+            <table class="table border">
+                <thead>
+                    <tr class="fw-bold tb-header">
+                        <th scope="col">Title</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @listings.each do |listing| %>
+                        <tr>
+                            <td class="fw-bold"><%= link_to listing.title, host_listing_path(listing) %></td>
+                            <td>Some addresss</td>
+                            <td>
+                                <% if listing.status == 'published' %>
+                                    <%= image_tag 'published.png', size: '20' %>
+                                <% elsif listing.status == 'draft' %>
+                                    <%= image_tag 'draft.png', size: '20' %>
+                                <% else %>
+                                    <%= image_tag 'archive.png', size: '20' %>
+                                <% end %>
+
+                                <%= listing.status %>
+                            </td>
+                            <td class="text-center"><%= link_to 'Edit', edit_host_listing_path(listing) %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
