@@ -51,10 +51,10 @@ class Host::ListingsController < ApplicationController
       end
 
       def listing_create_params
-        params.require(:listing).permit(:title, :about, :max_guests, :address_line_1, :address_line_2, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture)
+        params.require(:listing).permit(:title, :about, :max_guests, :address_line_1, :address_line_2, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture, facility_ids: [], amenity_ids: [], suitability_ids: [])
       end
 
       def listing_update_params
-        params.require(:listing).permit(:title, :about, :max_guests, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture)
+        params.require(:listing).permit(:title, :about, :max_guests, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture, facility_ids: [], amenity_ids: [], suitability_ids: [])
       end
 end

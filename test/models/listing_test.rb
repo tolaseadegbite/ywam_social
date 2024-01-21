@@ -8,7 +8,7 @@
 #  address_line_2 :string
 #  city           :string
 #  country        :string
-#  furniture      :integer          default(0)
+#  furniture      :integer          default("unfurnished")
 #  lat            :decimal(10, 6)
 #  listing_type   :integer          default("cabin")
 #  lng            :decimal(10, 6)
