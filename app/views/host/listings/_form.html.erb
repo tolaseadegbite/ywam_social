@@ -11,6 +11,11 @@
     </div>
 
     <div class="mb-3">
+        <%= f.label :listing_type %>
+        <%= f.select :listing_type, Listing.listing_types.keys.map{ |key| [key.humanize.upcase, key] }, { include_blank: "Update listing type", selected: listing.listing_type }, class: "form-control rounded-0" %>
+    </div>
+
+    <div class="mb-3">
         <%= f.label 'Maximum of people thaty can stay?' %>
         <%= f.number_field :max_guests, class: 'form-control' %>
     </div>
@@ -19,7 +24,6 @@
         <%= f.label 'Size (in sqft)' %>
         <%= f.number_field :size, class: 'form-control' %>
     </div>
-
     
     <% if f.object.new_record? %>
         <div class="mb-3">
@@ -44,13 +48,23 @@
     <% end %>
 
     <div class="mb-3">
-        <%= f.label :listing_type %>
-        <%= f.select :listing_type, Listing.listing_types.keys.map{ |key| [key.humanize.upcase, key] }, { include_blank: "Update listing type", selected: listing.listing_type }, class: "form-control rounded-0" %>
-    </div>
-
-    <div class="mb-3">
         <%= f.label :furniture %>
         <%= f.select :furniture, Listing.furnitures.keys.map{ |key| [key.humanize.upcase, key] }, { include_blank: "Furnished or unfurnished?", selected: listing.furniture }, class: "form-control rounded-0" %>
+    </div>
+    
+    <div class="mb-3" data-controller="tom-select-facilities">
+        <%= f.label :facilities, class: "form-label" %>
+        <%= f.select :facility_ids, Facility.all.pluck(:name, :id), {}, { multiple: true, id: "select-facilities" } %>
+    </div>
+    
+    <div class="mb-3" data-controller="tom-select-amenities">
+        <%= f.label :amenities, class: "form-label" %>
+        <%= f.select :amenity_ids, Amenity.all.pluck(:name, :id), {}, { multiple: true, id: "select-amenities" } %>
+    </div>
+    
+    <div class="mb-3" data-controller="tom-select-suitabilities">
+        <%= f.label 'suitabile for', class: "form-label" %>
+        <%= f.select :suitability_ids, Suitability.all.pluck(:name, :id), {}, { multiple: true, id: "select-suitabilities" } %>
     </div>
 
     <div class="mb-3">
