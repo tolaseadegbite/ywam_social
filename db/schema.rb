@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_21_141831) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_22_200525) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,6 +81,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_141831) do
     t.datetime "updated_at", null: false
     t.index ["facility_id"], name: "index_listing_facilities_on_facility_id"
     t.index ["listing_id"], name: "index_listing_facilities_on_listing_id"
+  end
+
+  create_table "listing_photos", force: :cascade do |t|
+    t.string "photo"
+    t.string "caption"
+    t.bigint "listing_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_listing_photos_on_listing_id"
   end
 
   create_table "listing_suitabilities", force: :cascade do |t|
@@ -156,6 +165,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_141831) do
   add_foreign_key "listing_amenities", "listings"
   add_foreign_key "listing_facilities", "facilities"
   add_foreign_key "listing_facilities", "listings"
+  add_foreign_key "listing_photos", "listings"
   add_foreign_key "listing_suitabilities", "listings"
   add_foreign_key "listing_suitabilities", "suitabilities"
   add_foreign_key "listings", "users", column: "host_id"

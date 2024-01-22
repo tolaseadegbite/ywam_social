@@ -46,6 +46,9 @@ class Listing < ApplicationRecord
   # rooms association
   has_many :rooms, dependent: :destroy
 
+  # listing photos association
+  has_many :listing_photos, dependent: :destroy
+
   # listing facilities association
   has_many :listing_facilities, dependent: :destroy
   has_many :facilities, through: :listing_facilities
