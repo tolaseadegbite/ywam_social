@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :host do
     resources :listings do
       resources :rooms
+      resources :listing_photos
     end
   end
 end

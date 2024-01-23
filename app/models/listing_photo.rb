@@ -18,5 +18,9 @@
 #  fk_rails_...  (listing_id => listings.id)
 #
 class ListingPhoto < ApplicationRecord
+  validates :photo, :caption, presence: true
+
   belongs_to :listing
+
+  has_one_attached :photo
 end

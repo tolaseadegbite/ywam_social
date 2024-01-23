@@ -44,8 +44,14 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card border-0 text-bg-dark">
+                        <div class="card border-0 text-bg-dark position-relative">
                             <%= image_tag 'apartment1.jpg', class: 'card-img' %>
+
+                            <%= link_to host_listing_path(), class: 'position-absolute btn btn-sm btn-light border border-black fs-6', style:"right: 10px; bottom: 10px;" do %>
+                                <i class="bi bi-images"></i>
+                                See all photos
+                            <% end %>
+                            
                         </div>
                     </div>
                 </div>
