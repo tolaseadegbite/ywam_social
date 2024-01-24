@@ -23,6 +23,7 @@ class Host::ListingsController < ApplicationController
 
     def show
       @rooms = @listing.rooms
+      render 'listings/show'
     end
 
     def edit

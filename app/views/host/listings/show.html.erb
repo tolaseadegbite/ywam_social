@@ -61,7 +61,7 @@
                         <div class="col-sm-6 mb-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title h6"><%= room.room_type %>  <span class="badge text-bg-primary rounded-circle"><%= room.number_of_room %></span></h5>
+                                    <h5 class="card-title h6"><%= room.room_type %>  <small class="info"><%= link_to 'edit', edit_host_listing_room_path(@listing, room) %></small>
 
                                     <!-- loop through beds in a room if any-->
                                     <% if room.beds.any? %>

@@ -19,8 +19,8 @@
 #
 class Room < ApplicationRecord
   belongs_to :listing
-  has_many :beds, dependent: :destroy
-  accepts_nested_attributes_for :beds
+  has_many :beds, dependent: :destroy, inverse_of: :room
+  accepts_nested_attributes_for :beds, allow_destroy: true, reject_if: :all_blank
   
   enum room_type: { 
     Bedroom: 0, 

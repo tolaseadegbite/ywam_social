@@ -9,6 +9,7 @@ class Host::RoomsController < ApplicationController
 
     def new
       @room = Room.new
+      @bed = @room.beds.build
     end
 
     def create
@@ -46,7 +47,7 @@ class Host::RoomsController < ApplicationController
     private
 
         def room_params
-            params.require(:room).permit(:room_type, :number_of_room)
+            params.require(:room).permit(:room_type, :number_of_room, bed_attributes: [:id, :_destroy, :bed_size, :number_of_bed])
         end
 
         def find_listing
