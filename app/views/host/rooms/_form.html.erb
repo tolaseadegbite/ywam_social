@@ -21,7 +21,7 @@
         <!--  custom logic for rooms nested form -->
         <template data-nested-form-target="template">
             <%= f.fields_for :beds, Bed.new, child_index: 'NEW_RECORD' do |bed_fields| %>
-                <%= render "host/rooms/room_bed_form", f: bed_fields %>
+                <%= render "host/rooms/room_bed_form", f: bed_fields, bed: @bed %>
             <% end %>
         </template>
 

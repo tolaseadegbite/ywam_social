@@ -7,8 +7,14 @@ import { application } from "./application"
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
+import LightBoxController from "./light_box_controller.js"
+application.register("light-box", LightBoxController)
+
 import NestedFormController from "./nested_form_controller.js"
 application.register("nested-form", NestedFormController)
+
+import SwiperController from "./swiper_controller.js"
+application.register("swiper", SwiperController)
 
 import TomSelectAmenitiesController from "./tom_select_amenities_controller.js"
 application.register("tom-select-amenities", TomSelectAmenitiesController)

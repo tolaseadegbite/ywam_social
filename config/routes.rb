@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index', as: :dashboard
   root 'static_pages#home'
 
-  resources :listings, only: [:index, :show]
+  resources :listings, only: [:index, :show] do
+    resources :listing_photos
+  end
 
   namespace :host do
     resources :listings do

@@ -1,0 +1,37 @@
+<div class="col-md-6">
+    <%= image_tag @listing.listing_photos.first.photo, class: 'listing-show-img rounded-1' %>
+</div>
+<div class="col-md-6 mb-0 pb-0">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <div class="card  border-0 text-bg-dark">
+                <%= image_tag @listing.listing_photos.second.photo, class: 'card-img' %>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="card border-0 text-bg-dark">
+                <%= image_tag @listing.listing_photos.third.photo, class: 'card-img' %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-0 text-bg-dark">
+                <%= image_tag @listing.listing_photos.fourth.photo, class: 'card-img' %>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-0 text-bg-dark position-relative">
+                <%= image_tag @listing.listing_photos.fifth.photo, class: 'card-img' %>
+
+                <% if @listing.listing_photos.count > 5 %>
+                    <%= link_to listing_listing_photos_path(@listing), class: 'position-absolute btn btn-sm btn-light border border-black fs-6', style:"right: 10px; bottom: 10px;" do %>
+                        <i class="bi bi-images"></i>
+                        See all photos
+                    <% end %>
+                <% end %>
+                
+            </div>
+        </div>
+    </div>
+</div>

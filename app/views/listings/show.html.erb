@@ -2,59 +2,89 @@
     <!-- main content start -->
     <div class="h-100 py-3">
         <!-- header starts -->
-        <%= link_to sanitize("&larr; Back to listings"), listings_path %>
+        <%= link_to sanitize("&larr; Back to listings"), listings_path, data: { turbo: false } %>
         <div class="p-3 header d-flex justify-content-between align-items-center mt-2 fw-bold">
             <h1 class="h2 card-title"><%= @listing.title %></h1>
-            <small>
-                <div>
-                    <%= link_to '#', class: "me-2 text-dark" do %>
-                        <i class="bi bi-share fs-6"></i>
-                        Share
-                    <% end %>
-                    <%= link_to '#', class: "text-dark" do %>
-                        <i class="bi bi-heart-fill text-danger fs-6"></i>
-                        Unfavourite
-                    <% end %>
-                </div>
-            </small>
+
+            <!-- perform the ff actions if user is signed in -->
+            <% if user_signed_in? %>
+                <small>
+                    <div>
+                        <%= link_to '#', class: "me-2 text-dark" do %>
+                            <i class="bi bi-share fs-6"></i>
+                            Share
+                        <% end %>
+                        <%= link_to '#', class: "text-dark me-2" do %>
+                            <i class="bi bi-heart-fill text-danger fs-6"></i>
+                            Unfavourite
+                        <% end %>
+                        <!-- edit listing, rooms and bed if host id == listing id -->
+                        <% if @listing.host == current_user %>
+                            <%= link_to edit_host_listing_path(@listing), class: "text-dark me-2" do %>
+                                <i class="bi bi-pencil-square  fs-6"></i>
+                                Edit listing
+                            <% end %>
+
+                            <span class="dropdown">
+                                <a href="/" class="text-dark" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-plus-square fs-6"></i>
+                                    Add rooms / bed
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><small>
+                                        <%= link_to 'Add rooms', new_host_listing_room_path(@listing), class: "dropdown-item" %>
+                                    </li></small>
+                                </ul>
+                            </span>
+                        <% end %>
+                    </div>
+                </small>
+            <% end %>
         </div>
         <!-- header ends -->
         <!-- listing image starts -->
         <div class="row mb-4">
-            <div class="col-md-6">
-                <%= image_tag 'apartment1.jpg', class: 'listing-show-img rounded-1' %>
-            </div>
-            <div class="col-md-6 mb-0 pb-0">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="card  border-0 text-bg-dark">
-                            <%= image_tag 'apartment2.jpg', class: 'card-img' %>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="card border-0 text-bg-dark">
-                            <%= image_tag 'apartment3.jpg', class: 'card-img' %>
-                        </div>
-                    </div>
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card border-0 text-bg-dark">
-                            <%= image_tag 'apartment4.jpg', class: 'card-img' %>
+                <div class="carousel-inner">
+                    <% @listing.listing_photos.each do |photo| %>
+                        <div class="carousel-item">
+                            <%= image_tag photo.photo, class: 'd-block w-100' %>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5><%= photo.caption %></h5>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card border-0 text-bg-dark position-relative">
-                            <%= image_tag 'apartment1.jpg', class: 'card-img' %>
+                    <% end %>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                </div>
+            <div class="swiper">
 
-                            <%= link_to host_listing_path(), class: 'position-absolute btn btn-sm btn-light border border-black fs-6', style:"right: 10px; bottom: 10px;" do %>
-                                <i class="bi bi-images"></i>
-                                See all photos
-                            <% end %>
-                            
-                        </div>
-                    </div>
+                <!-- listing image starts -->
+                <div class="position-relative swiper-wrapper">
+                    <% if @listing.listing_photos.any? %>
+                        <% @listing.listing_photos.each do |photo| %>
+                            <%= image_tag photo.photo, class: 'img-fluid swiper-slide' %>
+                            <i class="bi bi-heart-fill rounded-circle btn btn-sm text-secondary btn-light position-absolute" style="right: 10px; top: 10px;"></i>
+                        <% end %>
+                    <% end %>
                 </div>
+                <!-- listing image ends -->
+                <!-- listing info starts -->
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </div>
         <!-- listing image ends -->
@@ -122,16 +152,18 @@
 
                 <!-- render listing rooms if present -->
                 <% if @listing.rooms.present? %>
-                    <h5 class="mt-4 mb-2">
-                        Rooms
-                    </h5>
+                    <div class="d-flex align-items-center mt-4 mb-2">
+                        <h5 class="card-title">Rooms</h5>
+                    </div>
                     <div class="row">
                         <% @listing.rooms.each do |room| %>
                             <div class="col-md-4">
                                 
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title"><h6><%= room.room_type %></h6></h5>
+                                        <div class="d-flex align-items-center">
+                                            <h5 class="card-title"><%= room.room_type %></h5>  <small class="info ms-2"><%= link_to 'edit room', edit_host_listing_room_path(@listing, room) %></small>
+                                        </div>
                                         <% if room.beds.present? %>
                                             <hr>
                                             <ul>

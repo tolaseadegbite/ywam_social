@@ -24,7 +24,7 @@ class Host::RoomsController < ApplicationController
     end
 
     def edit
-      
+        @bed = @room.beds.build
     end
 
     def update

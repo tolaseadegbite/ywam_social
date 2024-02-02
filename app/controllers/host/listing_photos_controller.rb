@@ -5,6 +5,7 @@ class Host::ListingPhotosController < ApplicationController
 
     def index
       @listing_photos = @listing.listing_photos
+      render 'listing_photos/index'
     end
 
     def new

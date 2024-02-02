@@ -30,4 +30,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :listings, foreign_key: :host_id, dependent: :destroy
+
+  def name
+    "#{firstname} #{surname}"
+  end
 end

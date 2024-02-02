@@ -8,6 +8,13 @@
 // tom-select css
 @import "tom-select/dist/css/tom-select.bootstrap5.min";
 
+// stimulus lightbox
+// @import 'lightgallery/css/lightgallery.css';
+@import 'components/lightbox';
+
+// swiper
+// @import "swiper/swiper-bundle.min.css";
+
 // custom css
 
 // html {
@@ -96,7 +103,14 @@ a {
 
 // listing show card
 .listing-show-img {
-    width: 100%;
-    height: 30vw;
-    object-fit: cover;
+  width: 100%;
+  height: 30vw;
+  object-fit: cover;
+}
+
+// swiper
+
+.swiper {
+  width: 100%;
+  aspect-ratio: 1/1;
 }
