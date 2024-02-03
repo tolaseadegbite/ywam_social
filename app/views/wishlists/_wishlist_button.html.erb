@@ -1,0 +1,27 @@
+<div id="wishlist_button">
+    <% if user_signed_in? %>
+
+        <% wishlist = current_user.wishlists.find_by(wishable: wishable) %>
+
+        <% if wishlist.nil? %>
+
+            <%= form_with model: [Wishlist.new], method: :post do |f| %>
+                <%= f.hidden_field :wishable_id, value: wishable.id %>
+                <%= f.hidden_field :wishable_type, value: wishable.class.to_s %>
+                
+                <%= f.button class: "btn rounded-5 btn-light border" do %>
+                    <i class="bi bi-heart"></i>
+                    <%= wishable.wishlists.count %>
+                <% end %>
+            <% end %>
+        <% else %>
+            <%= form_with url: wishlist_path(wishlist), method: :delete do |f| %>
+                
+                <%= f.button class: "btn btn-success rounded-5" do %>
+                    <i class="bi bi-heart-fill"></i>
+                    <%= wishable.wishlists.count %>
+                <% end %>
+            <% end %>
+        <% end %>
+    <% end %>
+</div>
