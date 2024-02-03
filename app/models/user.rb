@@ -34,4 +34,8 @@ class User < ApplicationRecord
   def name
     "#{firstname} #{surname}"
   end
+
+  # wishlists association
+  has_many :wishlists, dependent: :destroy, dependent: :destroy
+  has_many :wishlisted_listings, through: :wishlists, source: :wishable, source_type: "Listing"
 end

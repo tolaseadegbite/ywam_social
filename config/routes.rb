@@ -13,4 +13,6 @@ Rails.application.routes.draw do
       resources :listing_photos
     end
   end
+
+  resources :wishlists, only: [:create, :destroy]
 end

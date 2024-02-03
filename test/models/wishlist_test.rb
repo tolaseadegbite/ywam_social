@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: wishlists
+#
+#  id            :bigint           not null, primary key
+#  wishable_type :string           not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :bigint           not null
+#  wishable_id   :bigint           not null
+#
+# Indexes
+#
+#  index_wishlists_on_user_id                                    (user_id)
+#  index_wishlists_on_user_id_and_wishable_id                    (user_id,wishable_id) UNIQUE
+#  index_wishlists_on_user_id_and_wishable_id_and_wishable_type  (user_id,wishable_id,wishable_type) UNIQUE
+#  index_wishlists_on_wishable                                   (wishable_type,wishable_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
+require "test_helper"
+
+class WishlistTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end

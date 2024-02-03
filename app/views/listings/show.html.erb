@@ -43,50 +43,14 @@
         </div>
         <!-- header ends -->
         <!-- listing image starts -->
-        <div class="row mb-4">
-            <div id="carouselExampleCaptions" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <% @listing.listing_photos.each do |photo| %>
-                        <div class="carousel-item">
-                            <%= image_tag photo.photo, class: 'd-block w-100' %>
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5><%= photo.caption %></h5>
-                            </div>
-                        </div>
-                    <% end %>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                </div>
-            <div class="swiper">
+        <section class="photo-gallery">
 
-                <!-- listing image starts -->
-                <div class="position-relative swiper-wrapper">
-                    <% if @listing.listing_photos.any? %>
-                        <% @listing.listing_photos.each do |photo| %>
-                            <%= image_tag photo.photo, class: 'img-fluid swiper-slide' %>
-                            <i class="bi bi-heart-fill rounded-circle btn btn-sm text-secondary btn-light position-absolute" style="right: 10px; top: 10px;"></i>
-                        <% end %>
-                    <% end %>
-                </div>
-                <!-- listing image ends -->
-                <!-- listing info starts -->
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+            <div class="row mb-4 gallery-grid">
+                <% if @listing.listing_photos.count >= 5 %>
+                    <%= render 'listing_photos/5_photos_view' %>
+                <% end %>
             </div>
-        </div>
+        </section>
         <!-- listing image ends -->
 
         <!-- listing body starts -->

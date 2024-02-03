@@ -64,6 +64,10 @@ class Listing < ApplicationRecord
   # scope listings by published status
   scope :published, -> { where(status: :published) }
 
+  # wishlist association
+  has_many :wishlists, as: :wishable, dependent: :destroy
+  has_many :wishlist_users, through: :wishlists, source: :user
+
   # concatenate address, city and coountry for easy readablity
   def address
     "#{address_line_1} #{address_line_2} #{city} #{country}"
