@@ -13,6 +13,9 @@ application.register("light-box", LightBoxController)
 import NestedFormController from "./nested_form_controller.js"
 application.register("nested-form", NestedFormController)
 
+import RemovalsController from "./removals_controller.js"
+application.register("removals", RemovalsController)
+
 import SwiperController from "./swiper_controller.js"
 application.register("swiper", SwiperController)
 
