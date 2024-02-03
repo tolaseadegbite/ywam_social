@@ -4,3 +4,4 @@ import "./controllers"
 import "./gallery"
 // import * as bootstrap from "bootstrap"
 window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
+window.Flickity = require('flickity');

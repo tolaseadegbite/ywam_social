@@ -43,14 +43,21 @@
             <% end %>
         </div>
         <!-- header ends -->
-        <!-- listing image starts -->
-        <section class="photo-gallery">
 
+        <!-- listing image starts -->
+        <section class="photo-gallery position-relative">
             <div class="row mb-4 gallery-grid">
-                <% if @listing.listing_photos.count >= 5 %>
-                    <%= render 'listing_photos/5_photos_view' %>
-                <% end %>
+                <!-- Flickity HTML init -->
+                <div class="carousel p-0" data-flickity='{ "wrapAround": true }'>
+                    <% @listing.listing_photos.each do |photo| %>
+                        <%= image_tag photo.photo, class: 'carousel-cell' %>
+                    <% end %>
+                </div>
             </div>
+            <%= link_to listing_listing_photos_path(@listing), class: 'position-absolute btn btn-sm btn-light border border-black fs-6', style:"right: 10px; bottom: 10px;" do %>
+                <i class="bi bi-images"></i>
+                See all photos
+            <% end %>
         </section>
         <!-- listing image ends -->
 

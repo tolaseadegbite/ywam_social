@@ -13,7 +13,7 @@
       <h1 class="h2 card-title"><%= link_to @listing.title, @listing %> / Photos</h1>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 gallery-grid">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-1 gallery-grid">
       <% if @listing.listing_photos.any? %>
         <% @listing_photos.each do |photo| %>
           <div class="col">

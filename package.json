@@ -9,11 +9,11 @@
     "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.10.5",
     "esbuild": "^0.19.2",
+    "flickity": "^3.0.0",
     "nodemon": "^3.0.1",
     "postcss": "^8.4.28",
     "postcss-cli": "^10.1.0",
     "sass": "^1.66.0",
-    "stimulus-lightbox": "^3.2.0",
     "stimulus-rails-nested-form": "^4.1.0",
     "swiper": "^11.0.5",
     "tom-select": "^2.3.1"
