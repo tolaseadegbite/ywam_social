@@ -48,7 +48,7 @@
         <section class="photo-gallery position-relative">
             <div class="row mb-4 gallery-grid">
                 <!-- Flickity HTML init -->
-                <div class="carousel p-0" data-flickity='{ "wrapAround": true }'>
+                <div class="carousel p-0" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
                     <% @listing.listing_photos.each do |photo| %>
                         <%= image_tag photo.photo, class: 'carousel-cell' %>
                     <% end %>
