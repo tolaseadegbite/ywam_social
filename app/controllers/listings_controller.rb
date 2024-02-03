@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
 
   def index
-    @listings = Listing.published
+    @listings = Listing.published.ordered
   end
 
   def show

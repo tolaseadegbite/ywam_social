@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_03_090824) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_03_102510) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -120,6 +120,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_090824) do
     t.datetime "updated_at", null: false
     t.integer "furniture", default: 0
     t.integer "size"
+    t.integer "wishlists_count", default: 0
     t.index ["host_id"], name: "index_listings_on_host_id"
   end
 

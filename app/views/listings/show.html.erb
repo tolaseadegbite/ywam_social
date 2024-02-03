@@ -14,10 +14,11 @@
                             <i class="bi bi-share fs-6"></i>
                             Share
                         <% end %>
-                        <%= link_to '#', class: "text-dark me-2" do %>
-                            <i class="bi bi-heart-fill text-danger fs-6"></i>
-                            Unfavourite
-                        <% end %>
+                        
+                        <!-- wishlist button starts -->
+                        <%= render 'wishlists/wishlist_button', wishable: @listing %>
+                        <!-- wishlist button ends -->
+
                         <!-- edit listing, rooms and bed if host id == listing id -->
                         <% if @listing.host == current_user %>
                             <%= link_to edit_host_listing_path(@listing), class: "text-dark me-2" do %>
@@ -56,9 +57,7 @@
         <!-- listing body starts -->
         <div class="row listing-body">
             <div class="col-md-8">
-                <div>
-                    <%= render 'wishlists/wishlist_button', wishable: @listing %>
-                </div>
+                
                 <h5><i class="bi bi-geo-alt-fill"></i> <%= @listing.listing_type.capitalize %> in City, Country</h5>
 
                 <h5 class="mt-4 mb-2">

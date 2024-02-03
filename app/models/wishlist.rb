@@ -24,5 +24,5 @@ class Wishlist < ApplicationRecord
   validates :user_id, uniqueness: { scope: [:wishable_id, :wishable_type] }
 
   belongs_to :user
-  belongs_to :wishable, polymorphic: true
+  belongs_to :wishable, polymorphic: true, counter_cache: :wishlists_count
 end

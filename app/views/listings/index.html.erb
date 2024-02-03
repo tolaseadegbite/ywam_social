@@ -16,9 +16,11 @@
                     <div class="col-md-4">
                         <%= link_to listing, data: { turbo: "false" } do %>
                             <div class="card shadow border-0 position-relative">
-                                <div class="position-absolute btn btn-sm btn-light z-3 rounded-circle" style="right: 15px; top: 10px;">
-                                    <i class="bi bi-heart-fill text-danger"></i>
-                                </div>
+                                <% if listing.wishlists_count > 0 %>
+                                    <div class="position-absolute btn btn-sm btn-light z-3 rounded-circle" style="right: 15px; top: 10px;">
+                                        <i class="bi bi-heart-fill text-danger"></i>
+                                    </div>
+                                <% end %>
                                 <div class="swiper">
 
                                     <!-- listing image starts -->
@@ -30,7 +32,6 @@
                                             <% end %>
                                         <% else %>
                                             <%= image_tag 'apartment1.jpg', class: 'card-img-top' %>
-                                            <i class="bi bi-heart-fill rounded-circle position-absolute" style="right: 10px; top: 10px;"></i>
                                         <% end %>
                                     </div>
                                     <!-- listing image ends -->

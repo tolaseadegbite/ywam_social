@@ -2,25 +2,26 @@
 #
 # Table name: listings
 #
-#  id             :bigint           not null, primary key
-#  about          :text
-#  address_line_1 :string
-#  address_line_2 :string
-#  city           :string
-#  country        :string
-#  furniture      :integer          default("unfurnished")
-#  lat            :decimal(10, 6)
-#  listing_type   :integer          default("cabin")
-#  lng            :decimal(10, 6)
-#  max_guests     :integer          default(1)
-#  postal_code    :string
-#  size           :integer
-#  state          :string
-#  status         :integer          default("draft")
-#  title          :string           not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  host_id        :bigint           not null
+#  id              :bigint           not null, primary key
+#  about           :text
+#  address_line_1  :string
+#  address_line_2  :string
+#  city            :string
+#  country         :string
+#  furniture       :integer          default("unfurnished")
+#  lat             :decimal(10, 6)
+#  listing_type    :integer          default("cabin")
+#  lng             :decimal(10, 6)
+#  max_guests      :integer          default(1)
+#  postal_code     :string
+#  size            :integer
+#  state           :string
+#  status          :integer          default("draft")
+#  title           :string           not null
+#  wishlists_count :integer          default(0)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  host_id         :bigint           not null
 #
 # Indexes
 #
@@ -61,8 +62,9 @@ class Listing < ApplicationRecord
   has_many :listing_suitabilities, dependent: :destroy
   has_many :suitabilities, through: :listing_suitabilities
 
-  # scope listings by published status
+  # scope listings by published status and id
   scope :published, -> { where(status: :published) }
+  scope :ordered, -> { order(id: :desc) }
 
   # wishlist association
   has_many :wishlists, as: :wishable, dependent: :destroy
