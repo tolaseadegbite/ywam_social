@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_03_102510) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_04_125558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -121,7 +121,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_102510) do
     t.integer "furniture", default: 0
     t.integer "size"
     t.integer "wishlists_count", default: 0
+    t.integer "reviews_count", default: 0
+    t.decimal "average_rating", default: "0.0"
     t.index ["host_id"], name: "index_listings_on_host_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.string "reviewable_type", null: false
+    t.bigint "reviewable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reviewable_id", "reviewable_type"], name: "index_reviews_on_reviewable_id_and_reviewable_type"
+    t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable"
+    t.index ["user_id", "reviewable_id", "reviewable_type"], name: "index_reviews_on_user_id_and_reviewable_id_and_reviewable_type", unique: true
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -182,6 +199,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_102510) do
   add_foreign_key "listing_suitabilities", "listings"
   add_foreign_key "listing_suitabilities", "suitabilities"
   add_foreign_key "listings", "users", column: "host_id"
+  add_foreign_key "reviews", "users"
   add_foreign_key "rooms", "listings"
   add_foreign_key "wishlists", "users"
 end

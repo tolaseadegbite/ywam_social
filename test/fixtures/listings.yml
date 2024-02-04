@@ -6,6 +6,7 @@
 #  about           :text
 #  address_line_1  :string
 #  address_line_2  :string
+#  average_rating  :decimal(, )      default(0.0)
 #  city            :string
 #  country         :string
 #  furniture       :integer          default("unfurnished")
@@ -14,6 +15,7 @@
 #  lng             :decimal(10, 6)
 #  max_guests      :integer          default(1)
 #  postal_code     :string
+#  reviews_count   :integer          default(0)
 #  size            :integer
 #  state           :string
 #  status          :integer          default("draft")

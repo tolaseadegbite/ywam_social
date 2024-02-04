@@ -35,7 +35,11 @@ class User < ApplicationRecord
     "#{firstname} #{surname}"
   end
 
-  # wishlists association
-  has_many :wishlists, dependent: :destroy, dependent: :destroy
+  # wishlist association
+  has_many :wishlists, dependent: :destroy
   has_many :wishlisted_listings, through: :wishlists, source: :wishable, source_type: "Listing"
+
+  # review association
+  has_many :reviews, dependent: :destroy
+  has_many :reviewed_listings, through: :reviews, source: :reviewable, source_type: "Listing"
 end
