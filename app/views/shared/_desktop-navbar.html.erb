@@ -32,54 +32,58 @@
         </span>
         </li>
 
-        <li class="nav-item dropdown">
-          <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= image_tag 'avatar1.jpeg', size: '38', class: 'rounded-2' %>
-          </a>
-          <ul class="dropdown-menu dropdown-animation dropdown-menu-end small me-md-n3 shadow px-3 py-3" style="width: 290px">
-            <div class="profile-dropdown">
-              <div class="dropdown-header d-flex flex-row">
-                <div class="avatar">
-                  <%= image_tag 'avatar1.jpeg', size: '55', class: 'rounded-circle' %>
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= image_tag 'avatar1.jpeg', size: '38', class: 'rounded-2' %>
+            </a>
+            <ul class="dropdown-menu dropdown-animation dropdown-menu-end small me-md-n3 shadow px-3 py-3" style="width: 290px">
+              <div class="profile-dropdown">
+                <div class="dropdown-header d-flex flex-row">
+                  <div class="avatar">
+                    <%= image_tag 'avatar1.jpeg', size: '55', class: 'rounded-circle' %>
+                  </div>
+                  <div class="info mt-2 ms-3">
+                    <h5 class="m-0 fw-bold text-black"><%= current_user.name %></h5>
+                    <p class="text-muted">Staff (<%= current_user.email %>)</p>
+                  </div>
                 </div>
-                <div class="info mt-2 ms-3">
-                  <h5 class="m-0 fw-bold text-black"><%= current_user.name %></h5>
-                  <p class="text-muted">Staff</p>
+                <%= link_to 'View profile', '#', class: 'btn btn-primary-soft btn-sm w-100 rounded-0 py-2  dropdown-item text-center' %>
+
+                <%= link_to '#', class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
+                  <i class="bi bi-gear me-1"></i>
+                  Settings & Privacy
+                <% end %>
+
+                <%= link_to '#', class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
+                  <i class="bi bi-info-circle me-1"></i>
+                  Support
+                <% end %>
+
+                <%= link_to '#', class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
+                  <i class="bi bi-card-list me-1"></i>
+                  Documentation
+                <% end %>
+
+                <li><hr class="dropdown-divider"></li>
+                <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
+                  <i class="bi bi-power me-1"></i>
+                  Sign Out
+                <% end %>
+                <li><hr class="dropdown-divider"></li>
+
+                <div class="dropdown-footer d-flex justify-content-between align-items-center">
+                  <span>Mode:</span>
+                  <span class="bg-primary py-2 px-3 rounded"><i class="bi bi-sun text-white"></i></span>
+                  <span><i class="bi bi-moon-stars"></i></span>
+                  <span><i class="bi bi-circle-half"></i></span>
                 </div>
               </div>
-              <%= link_to 'View profile', '#', class: 'btn btn-primary-soft btn-sm w-100 rounded-0 py-2  dropdown-item text-center' %>
-
-              <%= link_to '#', class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
-                <i class="bi bi-gear me-1"></i>
-                Settings & Privacy
-              <% end %>
-
-              <%= link_to '#', class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
-                <i class="bi bi-info-circle me-1"></i>
-                Support
-              <% end %>
-
-              <%= link_to '#', class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
-                <i class="bi bi-card-list me-1"></i>
-                Documentation
-              <% end %>
-
-              <li><hr class="dropdown-divider"></li>
-              <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: 'dropdown-item mt-2 bg-transparent link-offset-primary' do %>
-                <i class="bi bi-power me-1"></i>
-                Sign Out
-              <% end %>
-              <li><hr class="dropdown-divider"></li>
-
-              <div class="dropdown-footer d-flex justify-content-between align-items-center">
-                <span>Mode:</span>
-                <span class="bg-primary py-2 px-3 rounded"><i class="bi bi-sun text-white"></i></span>
-                <span><i class="bi bi-moon-stars"></i></span>
-                <span><i class="bi bi-circle-half"></i></span>
-              </div>
-            </div>
-          </ul>
-        </li>
+            </ul>
+          </li
+        <% else %>
+          <%= link_to 'Sign in', new_user_session_path, class: "nav-link" %>
+        <% end %>
 
       </ul>
     </div>

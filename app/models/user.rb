@@ -12,6 +12,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  reviews_count          :integer          default(0)
 #  surname                :string           not null
 #  username               :string           not null
 #  ywam_base              :string
@@ -42,4 +43,14 @@ class User < ApplicationRecord
   # review association
   has_many :reviews, dependent: :destroy
   has_many :reviewed_listings, through: :reviews, source: :reviewable, source_type: "Listing"
+
+  # user avatar
+  has_one_attached :avatar do |attachable|
+    attachable.variant :display, resize_to_limit: [500, 500]
+  end
+
+  validates :avatar, content_type: { in: %w[image/jpeg image/png],
+                                    message: "must be a valid image format" },
+                    size:         { less_than: 1.megabytes,
+                                    message:   "should be less than 1MB" }
 end

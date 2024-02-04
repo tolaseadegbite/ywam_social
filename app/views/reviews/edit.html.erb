@@ -1,0 +1,16 @@
+<div class="container my-3">
+
+    <%= link_to sanitize("&larr; back to: #{@reviewable.title}"), @reviewable %>
+
+    <div class="header pt-2">
+        <h1>Edit Review</h1>
+        <p class="fs-5"><strong>You are reviewing:</strong> <%= link_to @reviewable.title, @reviewable %></p>
+    </div>
+    <hr>
+    <br>
+    <%= turbo_frame_tag @review do %>
+        <div class="form">
+            <%= render 'form',  reviewable: @reviewable, review: @review %>
+        </div>
+    <% end %>4
+</div>

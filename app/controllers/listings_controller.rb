@@ -6,5 +6,8 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.published.find(params[:id])
+    @review = Review.new
+    @reviews = @listing.reviews.includes(:user)
+    @reviewable = @listing
   end
 end

@@ -24,11 +24,20 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Review < ApplicationRecord
-  validates :user_id, presence: true, uniqueness: { scope: [:reviewable_id, :reviewable_type] }
+  after_commit :update_average_rating, on: [:create, :update, :destroy]
 
-  belongs_to :user
+  validates :user_id, presence: true, uniqueness: { scope: [:reviewable_id, :reviewable_type], message: "Already been reviewed." }
+  validates :body, presence: true
+  validates :rating, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 6 }
+
+  belongs_to :user, counter_cache: :reviews_count
 
   belongs_to :reviewable, polymorphic: true, counter_cache: :reviews_count
 
   has_many :reviewed_users, through: :reviews, source: :user
+
+  # after commit callback
+  def update_average_rating
+    reviewable.update!(average_rating: reviewable.reviews.average(:rating))
+  end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :listings, only: [:index, :show] do
     resources :listing_photos
+    resources :reviews
   end
 
   namespace :host do
