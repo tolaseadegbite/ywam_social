@@ -18,11 +18,3 @@
 #  fk_rails_...  (amenity_id => amenities.id)
 #  fk_rails_...  (listing_id => listings.id)
 #
-
-one:
-  listing: one
-  amenity: one
-
-two:
-  listing: two
-  amenity: two

@@ -54,15 +54,15 @@ class Listing < ApplicationRecord
 
   # listing facilities association
   has_many :listing_facilities, dependent: :destroy
-  has_many :facilities, through: :listing_facilities
+  has_many :facilities, through: :listing_facilities, dependent: :destroy
 
   # listing amenities association
   has_many :listing_amenities, dependent: :destroy
-  has_many :amenities, through: :listing_amenities
+  has_many :amenities, through: :listing_amenities, dependent: :destroy
 
   # listing suitablities association
   has_many :listing_suitabilities, dependent: :destroy
-  has_many :suitabilities, through: :listing_suitabilities
+  has_many :suitabilities, through: :listing_suitabilities, dependent: :destroy
 
   # scope listings by published status and id
   scope :published, -> { where(status: :published) }
@@ -70,7 +70,7 @@ class Listing < ApplicationRecord
 
   # wishlist association
   has_many :wishlists, as: :wishable, dependent: :destroy
-  has_many :wishlist_users, through: :wishlists, source: :user
+  has_many :wishlist_users, through: :wishlists, source: :user, dependent: :destroy
 
   # review association
   has_many :reviews, as: :reviewable, dependent: :destroy

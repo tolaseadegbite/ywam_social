@@ -18,11 +18,3 @@
 #  fk_rails_...  (facility_id => facilities.id)
 #  fk_rails_...  (listing_id => listings.id)
 #
-
-one:
-  facilitiable: one
-  facility: one
-
-two:
-  facilitiable: two
-  facility: two

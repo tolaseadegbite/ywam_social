@@ -11,9 +11,3 @@
 #
 #  index_facilities_on_name  (name) UNIQUE
 #
-
-one:
-  name: MyString
-
-two:
-  name: MyString

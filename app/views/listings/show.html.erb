@@ -16,7 +16,7 @@
                         <% end %>
 
                         <%# render reviews information %>
-                        <%= render 'show_average_reviews' %>
+                        <%= render 'listings/show_average_reviews' %>
                         
                         <!-- wishlist button starts -->
                         <%= render 'wishlists/wishlist_button', wishable: @listing %>
@@ -156,7 +156,7 @@
                 <% end %>
                 
                 <!-- listing reviews section starts -->
-                <%= render 'listing_reviews' %>
+                <%= render 'listings/listing_reviews' %>
                 <!-- listing review section ends -->
             </div>
 

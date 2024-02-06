@@ -6,8 +6,8 @@
         <% end %>
         
         <% if user_signed_in? %>
-            <%= turbo_frame_tag 'review_button' do %>
-                <%= render 'new_review_button' %>
+            <%= turbo_frame_tag 'listings/review_button' do %>
+                <%= render 'listings/new_review_button' %>
             <% end %>
         <% end %>
 

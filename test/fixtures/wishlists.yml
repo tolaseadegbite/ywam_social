@@ -20,13 +20,3 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-
-one:
-  user: one
-  wishable: one
-  wishable_type: Wishable
-
-two:
-  user: two
-  wishable: two
-  wishable_type: Wishable

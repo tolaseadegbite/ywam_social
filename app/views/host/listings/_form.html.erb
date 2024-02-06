@@ -1,5 +1,7 @@
 <%= form_with model: [:host, listing] do |f| %>
 
+    <%= render 'layouts/errors', f: f %>
+
     <div class="mb-3">
         <%= f.label :title %>
         <%= f.text_field :title, class: 'form-control' %>

@@ -24,18 +24,3 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
-one:
-  title: MyString
-  body: MyText
-  rating: 1
-  user: one
-  reviewable: one
-  reviewable_type: Reviewable
-
-two:
-  title: MyString
-  body: MyText
-  rating: 1
-  user: two
-  reviewable: two
-  reviewable_type: Reviewable

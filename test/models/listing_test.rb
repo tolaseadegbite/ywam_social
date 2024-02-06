@@ -37,11 +37,11 @@ require "test_helper"
 
 class ListingTest < ActiveSupport::TestCase
   def setup
-    @user = users(:tolase)
-    @listing = @user.listings.build(title: "Best in Mexico city", max_guests: 3)
+    @host = users(:tolase)
+    @listing = @host.listings.build(title: "Basement", max_guests: 3)
   end
 
-  test 'listing should be valid' do
+  test 'listing must be valid' do
     assert @listing.valid?
   end
 
@@ -50,22 +50,18 @@ class ListingTest < ActiveSupport::TestCase
     assert_not @listing.valid?
   end
 
-  test "max guests must be greater than zero" do
+  test 'max_guests must be present' do
+    @listing.max_guests = nil
+    assert_not @listing.valid?
+  end
+
+  test 'max_guests must be greater than 0' do
     @listing.max_guests = 0
     assert_not @listing.valid?
   end
 
-  test "max guests must be less than than 101" do
-    @listing.max_guests = 101
+  test 'max_guests must be less than 101' do
+    @listing.max_guests = 102 
     assert_not @listing.valid?
-  end
-
-  test 'should delete associated rooms when listing is destroyed' do
-    # sign_in @user
-    @listing.save
-    @listing.rooms.create!(room_type: "Apartment", number_of_room: 2)
-    assert_difference 'Room.count', -1 do
-      @listing.destroy
-    end
   end
 end

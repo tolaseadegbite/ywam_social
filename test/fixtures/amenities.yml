@@ -12,8 +12,3 @@
 #  index_amenities_on_name  (name) UNIQUE
 #
 
-one:
-  name: MyString
-
-two:
-  name: MyString

@@ -18,12 +18,3 @@
 #  fk_rails_...  (listing_id => listings.id)
 #
 
-one:
-  photo: MyString
-  caption: MyString
-  listing: one
-
-two:
-  photo: MyString
-  caption: MyString
-  listing: two

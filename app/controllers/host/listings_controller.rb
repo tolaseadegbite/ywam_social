@@ -1,6 +1,7 @@
 class Host::ListingsController < ApplicationController
     before_action :authenticate_user!
     before_action :find_listing, only: [:show, :edit, :update, :destroy]
+    before_action :correct_user, only: [:edit, :update, :destroy]
 
     def index
       @listings = current_user.listings
@@ -13,15 +14,18 @@ class Host::ListingsController < ApplicationController
     def create
       @listing = current_user.listings.build(listing_create_params)
       if @listing.save
-          respond_to do |format|
-              format.html { redirect_to host_listing_path(@listing), notice: "Listing successfully created" }
-          end
+        respond_to do |format|
+          format.html { redirect_to host_listing_path(@listing), notice: "Listing successfully created" }
+        end
       else
           render :new, status: :unprocessable_entity
       end
     end
 
     def show
+      @review = Review.new
+      @reviews = @listing.reviews.includes(:user)
+      @reviewable = @listing
       @rooms = @listing.rooms
       render 'listings/show'
     end
@@ -58,4 +62,10 @@ class Host::ListingsController < ApplicationController
       def listing_update_params
         params.require(:listing).permit(:title, :about, :max_guests, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture, facility_ids: [], amenity_ids: [], suitability_ids: [])
       end
+
+      # confirms the correct user
+      def correct_user
+        @listing ||= current_user.listings.find(params[:id])
+        redirect_to(listings_url, status: :see_other, notice: "Access denied") unless @listing.host == current_user
+    end
 end

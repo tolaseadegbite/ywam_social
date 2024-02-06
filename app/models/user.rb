@@ -38,11 +38,11 @@ class User < ApplicationRecord
 
   # wishlist association
   has_many :wishlists, dependent: :destroy
-  has_many :wishlisted_listings, through: :wishlists, source: :wishable, source_type: "Listing"
+  has_many :wishlisted_listings, through: :wishlists, source: :wishable, source_type: "Listing", dependent: :destroy
 
   # review association
   has_many :reviews, dependent: :destroy
-  has_many :reviewed_listings, through: :reviews, source: :reviewable, source_type: "Listing"
+  has_many :reviewed_listings, through: :reviews, source: :reviewable, source_type: "Listing", dependent: :destroy
 
   # user avatar
   has_one_attached :avatar do |attachable|

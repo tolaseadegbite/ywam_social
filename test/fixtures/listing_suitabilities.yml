@@ -18,11 +18,3 @@
 #  fk_rails_...  (listing_id => listings.id)
 #  fk_rails_...  (suitability_id => suitabilities.id)
 #
-
-one:
-  listing: one
-  suitability: one
-
-two:
-  listing: two
-  suitability: two

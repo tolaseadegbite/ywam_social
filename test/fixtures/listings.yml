@@ -38,20 +38,18 @@ condo:
   host: tolase
   title: Condo Apartmant
   about: Nicest place you'd ever stay
-  max_guests: 1
+  max_guests: 2
   address_line_1: address line
   address_line_2: address line
   city: Ibadan
   state: Oyo
   country: Nigeria
   postal_code: 233433
-  lat: 
-  lng: 
 
-studio:
+treehouse:
   host: tolase
-  title: Condo Apartmant
-  about: Nicest place you'd ever stay
+  title: Treehouse
+  about: Nicest tree house you'd ever stay
   max_guests: 1
   address_line_1: address line
   address_line_2: address line
@@ -59,5 +57,3 @@ studio:
   state: Oyo
   country: Nigeria
   postal_code: 233433
-  lat: 
-  lng: 
