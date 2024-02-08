@@ -26,7 +26,43 @@
 require "test_helper"
 
 class ReviewTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = users(:tolase)
+    @reviewable = listings(:treehouse)
+    @review = @user.reviews.build(title: 'Bad review', body: 'This is an example bad review', rating: 1, reviewable: @reviewable)
+  end
+
+  test "must be valid" do
+    assert @review.valid?
+  end
+
+  test "user must be present" do
+    @review.user = nil
+    assert_not @review.valid?
+  end
+
+  test "body must be present" do
+    @review.body = ''
+    assert_not @review.valid?
+  end
+
+  test "rating must be present" do
+    @review.rating = nil
+    assert_not @review.valid?
+  end
+
+  test "rating must be integer" do
+    @review.rating = 3.5
+    assert_not @review.valid?
+  end
+
+  test "rating must be greater than zero" do
+    @review.rating = 0
+    assert_not @review.valid?
+  end
+
+  test "rating must be less than six" do
+    @review.rating = 6
+    assert_not @review.valid?
+  end
 end

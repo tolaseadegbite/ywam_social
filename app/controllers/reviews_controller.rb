@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
     before_action :find_reviewable
     before_action :find_review, only: [:show, :edit, :update, :destroy]
     before_action :restrict_other_users, only: %w[edit update destroy]
@@ -59,7 +59,7 @@ class ReviewsController < ApplicationController
         end
 
         def find_review
-            @review ||= Review.find(params[:id])
+            @review ||= current_user.reviews.find(params[:id])
         end
 
         def find_reviewable

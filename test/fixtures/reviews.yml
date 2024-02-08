@@ -24,3 +24,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
+review_1:
+  body: listing with 5-star rating
+  rating: 5
+  title: first review
+  reviewable: condo (Listing)
+  user: tolase
