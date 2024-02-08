@@ -36,9 +36,9 @@ class Host::ListingsController < ApplicationController
 
     def update
         if @listing.update(listing_update_params)
-            respond_to do |format|
-                format.html { redirect_to host_listing_path(@listing), notice: "Listing updated successfully" }
-            end
+          respond_to do |format|
+            format.html { redirect_to host_listing_path(@listing), notice: "Listing updated successfully" }
+          end
         else
             render :edit, status: :unprocessable_entity
         end
