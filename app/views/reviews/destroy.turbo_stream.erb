@@ -1,7 +1,7 @@
 <%= turbo_stream.remove @review %>
 <%= render_turbo_stream_flash_messages %>
 
-<% unless current_user.reviews.where(reviewable: @listing).exists? %>
+<% unless current_user.reviews.where(reviewable: @reviewable).exists? %>
   <%= turbo_stream.update Review.new do %>
     <%= render "listings/new_review_button" %>
   <% end %>

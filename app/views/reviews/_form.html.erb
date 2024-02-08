@@ -1,4 +1,5 @@
 <%= form_with model: [reviewable, review] do |f| %>
+    <%= render 'layouts/errors', f: f %>
 
   <div class="mb-3">
         <%= f.label :rating, "What's your overall rating?" %>

@@ -1,6 +1,6 @@
 <%# perform the following actions if a user is logged in and hasn't reviewed displayed product yet %>
 <% unless current_user && current_user.reviews.where(reviewable: @reviewable).exists? %>
-    <%= link_to "New review", new_listing_review_path(@reviewable), data: { turbo_frame: dom_id(Review.new) }, class: "btn btn-dark mb-3 mt-3" %>
+    <%= link_to "New review", new_polymorphic_path([@reviewable, @review]), data: { turbo_frame: dom_id(Review.new) }, class: "btn btn-dark mb-3 mt-3" %>
 <% else %>
     <%= render 'review_restriction_text' %>
 <% end %>

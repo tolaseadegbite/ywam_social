@@ -28,6 +28,8 @@ class Review < ApplicationRecord
 
   validates :user_id, presence: true, uniqueness: { scope: [:reviewable_id, :reviewable_type], message: "Already been reviewed." }
   validates :body, presence: true
+
+  # TODO: Give review rating a default of 1 star
   validates :rating, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 6 }
 
   belongs_to :user, counter_cache: :reviews_count

@@ -1,5 +1,5 @@
 <%= turbo_stream.append "reviews" do %>
-  <%= render @review, reviewable: @listing %>
+  <%= render @review, reviewable: @reviewable %>
   <%= render 'listings/review_restriction_text' %>
 <% end %>
 
