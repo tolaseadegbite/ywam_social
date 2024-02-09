@@ -18,4 +18,13 @@ class ReviewCreationTest < ActionDispatch::IntegrationTest
     assert_template 'reviews/new'
     assert_select 'div.text-danger'
   end
+
+  test "create review with invalid information" do
+    get new_listing_review_path(@reviewable)
+    assert_template 'reviews/new'
+    assert_difference 'Review.count', 1 do
+      post listing_reviews_path(@reviewable, format: :turbo_stream), params: { review: { title: 'title', body: 'body', rating: 5 } }
+    end
+    assert_template 'reviews/_review'
+  end
 end

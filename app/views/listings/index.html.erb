@@ -13,7 +13,7 @@
             <div class="row">
                 <!-- individual listing starts -->
                 <% @listings.each do |listing| %>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-3">
                         <%= link_to listing, data: { turbo: "false" } do %>
                             <div class="card shadow border-0 position-relative">
                                 <% if listing.wishlists_count > 0 %>
@@ -46,7 +46,7 @@
                                     <p class="card-text m-0">
                                         <small>
                                             <p class="m-0">
-                                                3.67
+                                                <%= listing.average_rating %>
                                                 <i class="bi bi-star-fill"></i>
                                             </p>
                                             <p class="m-0 text-muted">

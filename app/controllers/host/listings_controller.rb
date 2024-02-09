@@ -1,7 +1,7 @@
 class Host::ListingsController < ApplicationController
     before_action :authenticate_user!
     before_action :find_listing, only: [:show, :edit, :update, :destroy]
-    before_action :correct_user, only: [:edit, :update, :destroy]
+    before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
     def index
       @listings = current_user.listings

@@ -43,6 +43,7 @@ condo:
   address_line_2: address line
   city: Ibadan
   state: Oyo
+  status: published
   country: Nigeria
   postal_code: 233433
 
@@ -55,5 +56,6 @@ treehouse:
   address_line_2: address line
   city: Ibadan
   state: Oyo
+  status: published
   country: Nigeria
   postal_code: 233433

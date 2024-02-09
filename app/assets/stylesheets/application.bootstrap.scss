@@ -111,6 +111,13 @@ a {
 
 // listing show card
 .listing-show-img {
+    width: 100%;
+    // height: 55vw;
+    object-fit: cover;
+}
+
+// listing show card
+.listing-show-img {
   width: 100%;
   height: 30vw;
   object-fit: cover;
@@ -121,5 +128,6 @@ a {
 .swiper {
   width: 100%;
   aspect-ratio: 1/1;
+  height: 13vw;
 }
   

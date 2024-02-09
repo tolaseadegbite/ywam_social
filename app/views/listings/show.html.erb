@@ -48,15 +48,23 @@
         <!-- header ends -->
 
         <!-- listing image starts -->
-        <section class="photo-gallery position-relative">
-            <div class="row mb-4 gallery-grid">
-                <!-- Flickity HTML init -->
-                <div class="carousel p-0" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
-                    <% @listing.listing_photos.each do |photo| %>
-                        <%= image_tag photo.photo, class: 'carousel-cell' %>
-                    <% end %>
+        <section class="photo-gallery position-relative mb-3">
+            <% if @listing.listing_photos.count >= 3 %>
+                <div class="row mb-4 gallery-grid">
+                    <!-- Flickity HTML init -->
+                    <div class="carousel p-0" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
+                        <% @listing.listing_photos.each do |photo| %>
+                            <%= image_tag photo.photo, class: 'carousel-cell' %>
+                        <% end %>
+                    </div>
                 </div>
-            </div>
+            <% elsif @listing.listing_photos.count >= 1 %>
+                <div class="image">
+                    <%= image_tag @listing.listing_photos.first.photo, class: "listing-show-img" %>
+                </div>
+            <% else %>
+                <%= image_tag 'apartment1.jpg', class: 'listing-show-img' %>
+            <% end %>
             <%= link_to listing_listing_photos_path(@listing), class: 'position-absolute btn btn-sm btn-light border border-black fs-6', style:"right: 10px; bottom: 10px;" do %>
                 <i class="bi bi-images"></i>
                 See all photos
@@ -68,7 +76,7 @@
         <div class="row listing-body">
             <div class="col-md-8">
                 
-                <h5><i class="bi bi-geo-alt-fill"></i> <%= @listing.listing_type.capitalize %> in City, Country</h5>
+                <h5><i class="bi bi-geo-alt-fill"></i> <%= @listing.listing_type.capitalize %> in <%= @listing.city %>, <%= @listing.country %></h5>
 
                 <h5 class="mt-4 mb-2">
                     About this listing
