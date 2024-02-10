@@ -9,6 +9,7 @@ class Host::ListingsController < ApplicationController
 
     def new
       @listing = Listing.new
+      @listing_photo = @listing.listing_photos.build
     end
 
     def create
@@ -31,17 +32,17 @@ class Host::ListingsController < ApplicationController
     end
 
     def edit
-      
+      @listing_photo = @listing.listing_photos.build
     end
 
     def update
-        if @listing.update(listing_update_params)
-          respond_to do |format|
-            format.html { redirect_to host_listing_path(@listing), notice: "Listing updated successfully" }
-          end
-        else
-            render :edit, status: :unprocessable_entity
+      if @listing.update(listing_update_params)
+        respond_to do |format|
+          format.html { redirect_to host_listing_path(@listing), notice: "Listing updated successfully" }
         end
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
 
     def destroy
@@ -56,11 +57,11 @@ class Host::ListingsController < ApplicationController
       end
 
       def listing_create_params
-        params.require(:listing).permit(:title, :about, :max_guests, :address_line_1, :address_line_2, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture, facility_ids: [], amenity_ids: [], suitability_ids: [])
+        params.require(:listing).permit(:title, :about, :max_guests, :address_line_1, :address_line_2, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture, facility_ids: [], amenity_ids: [], suitability_ids: [], listing_photo_attributes: [:id, :_destroy, :caption, :photo])
       end
 
       def listing_update_params
-        params.require(:listing).permit(:title, :about, :max_guests, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture, facility_ids: [], amenity_ids: [], suitability_ids: [])
+        params.require(:listing).permit(:title, :about, :max_guests, :city, :state, :postal_code, :country, :status, :listing_type, :size, :furniture, facility_ids: [], amenity_ids: [], suitability_ids: [], listing_photo_attributes: [:id, :_destroy, :caption, :photo])
       end
 
       # confirms the correct user

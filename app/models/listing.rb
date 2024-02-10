@@ -50,7 +50,8 @@ class Listing < ApplicationRecord
   has_many :rooms, dependent: :destroy
 
   # listing photos association
-  has_many :listing_photos, dependent: :destroy
+  has_many :listing_photos, dependent: :destroy, inverse_of: :listing
+  accepts_nested_attributes_for :listing_photos, allow_destroy: true, reject_if: :all_blank
 
   # listing facilities association
   has_many :listing_facilities, dependent: :destroy

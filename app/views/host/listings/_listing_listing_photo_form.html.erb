@@ -1,0 +1,18 @@
+<div class="nested-form-wrapper d-flex justify-content-between align-items-end" data-new-record="<%= f.object.new_record? %>">
+
+    <div class="w-100 me-2">
+        <%= f.label :caption %>
+        <%= f.text_field :caption, class: "form-control" %>
+    </div>
+
+    <div class="w-100 me-2">
+        <%= f.label :photo %>
+        <%= f.file_field :photo, class: "form-control" %>
+    </div>
+
+    <div class="w-100">
+        <button type="button" class="btn btn-sm btn-danger" data-action="nested-form#remove">Remove photo</button>
+    </div>
+
+    <%= f.hidden_field :_destroy %>
+</div>

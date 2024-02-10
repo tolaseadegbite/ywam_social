@@ -1,78 +1,96 @@
-<%= form_with model: [:host, listing] do |f| %>
+<div data-controller="nested-form">
+    <%= form_with model: [:host, listing] do |f| %>
 
-    <%= render 'layouts/errors', f: f %>
+        <%= render 'layouts/errors', f: f %>
 
-    <div class="mb-3">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control' %>
-    </div>
-
-    <div class="mb-3">
-        <%= f.label :about %>
-        <%= f.text_area :about, placeholder: 'Describe your listing', class: 'form-control' %>
-    </div>
-
-    <div class="mb-3">
-        <%= f.label :listing_type %>
-        <%= f.select :listing_type, Listing.listing_types.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: true, selected: listing.listing_type }, class: "form-control rounded-0" %>
-    </div>
-
-    <div class="mb-3">
-        <%= f.label 'Maximum of people thaty can stay?' %>
-        <%= f.number_field :max_guests, class: 'form-control' %>
-    </div>
-
-    <div class="mb-3">
-        <%= f.label 'Size (in sqft)' %>
-        <%= f.number_field :size, class: 'form-control' %>
-    </div>
-    
-    <% if f.object.new_record? %>
         <div class="mb-3">
-            <%= f.label :address_line_1 %>
-            <%= f.text_field :address_line_1, class: 'form-control' %>
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control' %>
         </div>
 
         <div class="mb-3">
-            <%= f.label :address_line_2 %>
-            <%= f.text_field :address_line_2, class: 'form-control' %>
+            <%= f.label :about %>
+            <%= f.text_area :about, placeholder: 'Describe your listing', class: 'form-control' %>
         </div>
 
         <div class="mb-3">
-            <%= f.label :city %>
-            <%= f.text_field :city, class: 'form-control' %>
+            <%= f.label :listing_type %>
+            <%= f.select :listing_type, Listing.listing_types.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: true, selected: listing.listing_type }, class: "form-control rounded-0" %>
         </div>
 
         <div class="mb-3">
-            <%= f.label :country %>
-            <%= f.text_field :country, class: 'form-control' %>
+            <%= f.label 'Maximum of people thaty can stay?' %>
+            <%= f.number_field :max_guests, class: 'form-control' %>
         </div>
+
+        <div class="mb-3">
+            <%= f.label 'Size (in sqft)' %>
+            <%= f.number_field :size, class: 'form-control' %>
+        </div>
+        
+        <% if f.object.new_record? %>
+            <div class="mb-3">
+                <%= f.label :address_line_1 %>
+                <%= f.text_field :address_line_1, class: 'form-control' %>
+            </div>
+
+            <div class="mb-3">
+                <%= f.label :address_line_2 %>
+                <%= f.text_field :address_line_2, class: 'form-control' %>
+            </div>
+
+            <div class="mb-3">
+                <%= f.label :city %>
+                <%= f.text_field :city, class: 'form-control' %>
+            </div>
+
+            <div class="mb-3">
+                <%= f.label :country %>
+                <%= f.text_field :country, class: 'form-control' %>
+            </div>
+        <% end %>
+
+        <div class="mb-3">
+            <%= f.label :furniture %>
+            <%= f.select :furniture, Listing.furnitures.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: true, selected: listing.furniture }, class: "form-control rounded-0" %>
+        </div>
+        
+        <div class="mb-3" data-controller="tom-select-facilities">
+            <%= f.label :facilities, class: "form-label" %>
+            <%= f.select :facility_ids, Facility.all.pluck(:name, :id), {}, { multiple: true, id: "select-facilities" } %>
+        </div>
+        
+        <div class="mb-3" data-controller="tom-select-amenities">
+            <%= f.label :amenities, class: "form-label" %>
+            <%= f.select :amenity_ids, Amenity.all.pluck(:name, :id), {}, { multiple: true, id: "select-amenities" } %>
+        </div>
+        
+        <div class="mb-3" data-controller="tom-select-suitabilities">
+            <%= f.label 'suitabile for', class: "form-label" %>
+            <%= f.select :suitability_ids, Suitability.all.pluck(:name, :id), {}, { multiple: true, id: "select-suitabilities" } %>
+        </div>
+
+        <div class="mb-3">
+            <%= f.label :status %>
+            <%= f.select :status, Listing.statuses.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: true, selected: listing.status }, class: "form-control rounded-0" %>
+        </div>
+
+        <h1 class="h5 card-title mt-5">Add photos</h1>
+        <hr>
+
+        <!--  custom logic for rooms nested form -->
+        <template data-nested-form-target="template">
+            <%= f.fields_for :listing_photos, ListingPhoto.new, child_index: 'NEW_RECORD' do |listing_photo_fields| %>
+                <%= render "host/listings/listing_listing_photo_form", f: listing_photo_fields, listing_photo: @listing_photo %>
+            <% end %>
+        </template>
+
+
+        <!-- Inserted elements will be injected before that target. -->
+        <div data-nested-form-target="target"></div>
+        
+        <button type="button" class="btn btn-sm btn-info my-3" data-action="nested-form#add"><i class="bi bi-file-earmark-plus"></i></i> New photo</button>
+
+        <%= f.button :submit, class: 'btn btn-primary w-100' %>
     <% end %>
-
-    <div class="mb-3">
-        <%= f.label :furniture %>
-        <%= f.select :furniture, Listing.furnitures.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: true, selected: listing.furniture }, class: "form-control rounded-0" %>
-    </div>
-    
-    <div class="mb-3" data-controller="tom-select-facilities">
-        <%= f.label :facilities, class: "form-label" %>
-        <%= f.select :facility_ids, Facility.all.pluck(:name, :id), {}, { multiple: true, id: "select-facilities" } %>
-    </div>
-    
-    <div class="mb-3" data-controller="tom-select-amenities">
-        <%= f.label :amenities, class: "form-label" %>
-        <%= f.select :amenity_ids, Amenity.all.pluck(:name, :id), {}, { multiple: true, id: "select-amenities" } %>
-    </div>
-    
-    <div class="mb-3" data-controller="tom-select-suitabilities">
-        <%= f.label 'suitabile for', class: "form-label" %>
-        <%= f.select :suitability_ids, Suitability.all.pluck(:name, :id), {}, { multiple: true, id: "select-suitabilities" } %>
-    </div>
-
-    <div class="mb-3">
-        <%= f.label :status %>
-        <%= f.select :status, Listing.statuses.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: true, selected: listing.status }, class: "form-control rounded-0" %>
-    </div>
-
-    <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
+</div>

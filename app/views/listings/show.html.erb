@@ -65,10 +65,17 @@
             <% else %>
                 <%= image_tag 'apartment1.jpg', class: 'listing-show-img' %>
             <% end %>
-            <%= link_to listing_listing_photos_path(@listing), class: 'position-absolute btn btn-sm btn-light border border-black fs-6', style:"right: 10px; bottom: 10px;" do %>
+
+            <!-- Photos button start -->
+            <%= link_to listing_listing_photos_path(@listing), class: 'position-absolute btn btn-sm btn-light border border-black fs-6', style:"right: 140px; bottom: 10px;" do %>
                 <i class="bi bi-images"></i>
                 See all photos
             <% end %>
+            <%= link_to new_listing_listing_photo_path(@listing), class: 'position-absolute btn btn-sm btn-light border border-black fs-6', style:"right: 10px; bottom: 10px;" do %>
+                <i class="bi bi-file-earmark-plus"></i>
+                Add photos
+            <% end %>
+            <!-- Photos button end -->
         </section>
         <!-- listing image ends -->
 
