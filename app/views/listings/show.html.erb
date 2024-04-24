@@ -29,17 +29,10 @@
                                 Edit listing
                             <% end %>
 
-                            <span class="dropdown">
-                                <a href="/" class="text-dark" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-plus-square fs-6"></i>
-                                    Add rooms / bed
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><small>
-                                        <%= link_to 'Add rooms', new_host_listing_room_path(@listing), class: "dropdown-item" %>
-                                    </li></small>
-                                </ul>
-                            </span>
+                            <%= link_to new_host_listing_room_path(@listing), class: "text-dark" do %>
+                                <i class="bi bi-plus-square fs-6"></i>
+                                Add rooms and beds
+                            <% end %>
                         <% end %>
                     </div>
                 </small>
@@ -71,7 +64,7 @@
                 <i class="bi bi-images"></i>
                 See all photos
             <% end %>
-            <%= link_to new_listing_listing_photo_path(@listing), class: 'position-absolute btn btn-sm btn-light border border-black fs-6', style:"right: 10px; bottom: 10px;" do %>
+            <%= link_to edit_host_listing_path(@listing), class: 'position-absolute btn btn-sm btn-light border border-black fs-6', style:"right: 10px; bottom: 10px;" do %>
                 <i class="bi bi-file-earmark-plus"></i>
                 Add photos
             <% end %>

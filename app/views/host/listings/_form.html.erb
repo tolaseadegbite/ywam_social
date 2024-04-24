@@ -19,7 +19,7 @@
         </div>
 
         <div class="mb-3">
-            <%= f.label 'Maximum of people thaty can stay?' %>
+            <%= f.label 'Maximum of people that can stay?' %>
             <%= f.number_field :max_guests, class: 'form-control' %>
         </div>
 
@@ -91,6 +91,6 @@
         
         <button type="button" class="btn btn-sm btn-info my-3" data-action="nested-form#add"><i class="bi bi-file-earmark-plus"></i></i> New photo</button>
 
-        <%= f.button :submit, class: 'btn btn-primary w-100' %>
+        <span class="d-flex gap-2"><%= f.button :submit, class: 'btn btn-primary w-100' %> <%= link_to 'Cancel', host_listing_path(@listing), class: 'btn btn-outline-secondary w-100' %></span>
     <% end %>
 </div>

@@ -45,7 +45,7 @@
                   </div>
                   <div class="info mt-2 ms-3">
                     <h5 class="m-0 fw-bold text-black"><%= current_user.name %></h5>
-                    <p class="text-muted">Staff (<%= current_user.email %>)</p>
+                    <p class="text-muted">Staff</p>
                   </div>
                 </div>
                 <%= link_to 'View profile', '#', class: 'btn btn-primary-soft btn-sm w-100 rounded-0 py-2  dropdown-item text-center' %>
@@ -80,7 +80,7 @@
                 </div>
               </div>
             </ul>
-          </li
+          </li>
         <% else %>
           <%= link_to 'Sign in', new_user_session_path, class: "nav-link" %>
         <% end %>
