@@ -20,5 +20,9 @@
 class Bed < ApplicationRecord
   belongs_to :room
 
-  enum bed_size: { 'King size': 0, 'Large': 1, 'medium': 2 }
+  enum bed_size: { 
+    'King size': 0, 
+    'Large': 1, 
+    'medium': 2 
+  }
 end

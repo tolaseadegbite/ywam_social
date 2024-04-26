@@ -85,6 +85,12 @@
             <% end %>
         </template>
 
+        <% unless f.object.new_record? %>
+            <%= f.fields_for :listing_photos do |listing_photo_fields| %>
+                <%= render "host/listings/listing_listing_photo_form", f: listing_photo_fields %>
+            <% end %>
+        <% end %>
+
 
         <!-- Inserted elements will be injected before that target. -->
         <div data-nested-form-target="target"></div>

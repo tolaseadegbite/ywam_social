@@ -9,7 +9,7 @@ class Host::RoomsController < ApplicationController
 
     def new
       @room = Room.new
-      @bed = @room.beds.build
+      @room.beds.build
     end
 
     def create
@@ -24,7 +24,7 @@ class Host::RoomsController < ApplicationController
     end
 
     def edit
-        @bed = @room.beds.build
+        @room.beds.build
     end
 
     def update

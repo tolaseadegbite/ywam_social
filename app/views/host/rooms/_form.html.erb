@@ -1,7 +1,6 @@
 <div data-controller="nested-form">
 
     <%= form_with model: [:host, listing, room] do |f| %>
-
     
         <div class="mb-3">
             <%= f.label :room_type %>
@@ -21,9 +20,15 @@
         <!--  custom logic for rooms nested form -->
         <template data-nested-form-target="template">
             <%= f.fields_for :beds, Bed.new, child_index: 'NEW_RECORD' do |bed_fields| %>
-                <%= render "host/rooms/room_bed_form", f: bed_fields, bed: @bed %>
+                <%= render "host/rooms/room_bed_form", f: bed_fields %>
             <% end %>
         </template>
+
+        <%# unless f.object.new_record? %>
+            <%= f.fields_for :beds do |bed_fields| %>
+                <%= render "host/rooms/room_bed_form", f: bed_fields %>
+            <% end %>
+        <%# end %>
 
 
         <!-- Inserted elements will be injected before that target. -->

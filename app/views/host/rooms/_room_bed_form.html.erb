@@ -2,7 +2,7 @@
 
     <div class="w-100 me-2">
         <%= f.label :bed_size %>
-        <%= f.select :bed_size, Bed.bed_sizes.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: "Select bed size", selected: bed.bed_size }, class: "form-control" %>
+        <%= f.select :bed_size, Bed.bed_sizes.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: "Select bed size" }, class: "form-control" %>
     </div>
 
     <div class="w-100 me-2">
