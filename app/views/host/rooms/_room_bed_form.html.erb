@@ -1,17 +1,16 @@
-<div class="nested-form-wrapper d-flex justify-content-between align-items-center" data-new-record="<%= f.object.new_record? %>">
-
-    <div class="w-100 me-2">
+<div class="nested-form-wrapper row w-100" data-new-record="<%= f.object.new_record? %>">
+    <div class="col-md-4" data-controller="tom-select">
         <%= f.label :bed_size %>
         <%= f.select :bed_size, Bed.bed_sizes.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: "Select bed size" }, class: "form-control" %>
     </div>
 
-    <div class="w-100 me-2">
+    <div class="col-md-4">
         <%= f.label :number_of_bed %>
         <%= f.number_field :number_of_bed, class: "form-control" %>
     </div>
 
-    <div class="w-100">
-        <button type="button" class="btn btn-sm btn-danger" data-action="nested-form#remove">Remove bed</button>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-danger btn-sm border my-2" style="font-size: 10px;" data-action="nested-form#remove">Remove bed</button>
     </div>
 
     <%= f.hidden_field :_destroy %>
