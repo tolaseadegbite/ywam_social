@@ -2,12 +2,11 @@
 #
 # Table name: rooms
 #
-#  id             :bigint           not null, primary key
-#  number_of_room :integer          default(1), not null
-#  room_type      :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  listing_id     :bigint           not null
+#  id         :bigint           not null, primary key
+#  room_type  :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  listing_id :bigint           not null
 #
 # Indexes
 #

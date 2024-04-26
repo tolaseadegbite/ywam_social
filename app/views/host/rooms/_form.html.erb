@@ -6,11 +6,6 @@
             <%= f.label :room_type %>
             <%= f.select :room_type, Room.room_types.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: "Select room type", selected: room.room_type }, class: "form-control rounded-0" %>
         </div>
-    
-        <div class="mb-3">
-            <%= f.label :number_of_room %>
-            <%= f.number_field :number_of_room, class: "form-control" %>
-        </div>
 
         <h2 class="h4 my-3">
             Add beds
@@ -24,11 +19,11 @@
             <% end %>
         </template>
 
-        <%# unless f.object.new_record? %>
+        <% unless f.object.new_record? %>
             <%= f.fields_for :beds do |bed_fields| %>
                 <%= render "host/rooms/room_bed_form", f: bed_fields %>
             <% end %>
-        <%# end %>
+        <% end %>
 
 
         <!-- Inserted elements will be injected before that target. -->

@@ -47,7 +47,7 @@ class Host::RoomsController < ApplicationController
     private
 
         def room_params
-            params.require(:room).permit(:room_type, :number_of_room, beds_attributes: [:id, :_destroy, :bed_size, :number_of_bed])
+            params.require(:room).permit(:room_type, beds_attributes: [:id, :_destroy, :bed_size, :number_of_bed])
         end
 
         def find_listing
