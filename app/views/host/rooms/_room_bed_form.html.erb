@@ -3,7 +3,7 @@
         <%= f.label :bed_size %>
         <%= f.select :bed_size, Bed.bed_sizes.keys.map{ |key| [key.humanize.capitalize, key] }, { include_blank: "Select bed size" }, class: "form-control" %>
     </div>
-
+plis
     <div class="col-md-4">
         <%= f.label :number_of_bed %>
         <%= f.number_field :number_of_bed, class: "form-control" %>

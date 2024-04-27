@@ -9,7 +9,7 @@ class Host::ListingsController < ApplicationController
 
     def new
       @listing = Listing.new
-      @listing_photo = @listing.listing_photos.build
+      @listing.listing_photos.build
     end
 
     def create
@@ -32,7 +32,7 @@ class Host::ListingsController < ApplicationController
     end
 
     def edit
-      @listing_photo = @listing.listing_photos.build
+      @listing.listing_photos.build
     end
 
     def update

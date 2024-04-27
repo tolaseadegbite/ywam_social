@@ -81,7 +81,7 @@
         <!--  custom logic for rooms nested form -->
         <template data-nested-form-target="template">
             <%= f.fields_for :listing_photos, ListingPhoto.new, child_index: 'NEW_RECORD' do |listing_photo_fields| %>
-                <%= render "host/listings/listing_listing_photo_form", f: listing_photo_fields, listing_photo: @listing_photo %>
+                <%= render "host/listings/listing_listing_photo_form", f: listing_photo_fields %>
             <% end %>
         </template>
 
@@ -97,6 +97,10 @@
         
         <button type="button" class="btn btn-sm btn-info my-3" data-action="nested-form#add"><i class="bi bi-file-earmark-plus"></i></i> New photo</button>
 
-        <span class="d-flex gap-2"><%= f.button :submit, class: 'btn btn-primary w-100' %> <%= link_to 'Cancel', host_listing_path(@listing), class: 'btn btn-outline-secondary w-100' %></span>
+        <% if f.object.new_record? %>
+            <span class="d-flex gap-2"><%= f.button :submit, class: 'btn btn-primary w-100' %> <%= link_to 'Cancel', host_listings_path, class: 'btn btn-outline-secondary w-100' %></span>
+        <% else %>
+            <span class="d-flex gap-2"><%= f.button :submit, class: 'btn btn-primary w-100' %> <%= link_to 'Cancel', host_listing_path(@listing), class: 'btn btn-outline-secondary w-100' %></span>
+        <% end %>
     <% end %>
 </div>
