@@ -9,12 +9,13 @@
 #  encrypted_password     :string           default(""), not null
 #  firstname              :string           not null
 #  location               :string
+#  mod                    :boolean
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  reviews_count          :integer          default(0)
 #  surname                :string           not null
-#  username               :string           not null
+#  username               :string
 #  ywam_base              :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -23,6 +24,7 @@
 #
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  users_username_lower                 (lower((username)::text) text_pattern_ops) UNIQUE
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:

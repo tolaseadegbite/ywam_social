@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  mount Thredded::Engine => '/forum'
+
+  # Set root to be the Thredded forums index page at /forum
+  # root to: 'thredded/messageboards#index'
+  
   devise_for :users
   get '/dashboard', to: 'dashboard#index', as: :dashboard
-  root 'static_pages#home'
+  root 'listings#index'
 
   resources :listings, only: [:index, :show] do
     resources :listing_photos
@@ -16,4 +21,6 @@ Rails.application.routes.draw do
   end
 
   resources :wishlists, only: [:create, :destroy]
+
+  get '/users/:id' => 'profiles#show'
 end

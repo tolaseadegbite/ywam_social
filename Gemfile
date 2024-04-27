@@ -12,8 +12,8 @@ gem "bootstrap-sass",             "3.4.1"
 gem "will_paginate",              "3.3.1"
 gem "bootstrap-will_paginate",    "1.0.0"
 gem "pg",                         "1.3.5"
-# gem "sassc-rails",                "2.1.2"
-gem "dartsass-sprockets", "3.0.0"
+gem "sassc-rails",                "2.1.2"
+# gem "dartsass-sprockets", "3.0.0"
 gem "sprockets-rails",            "3.4.2"
 gem "cssbundling-rails"
 gem "turbo-rails",                "1.1.1"
@@ -22,6 +22,7 @@ gem "jsbundling-rails"
 gem "jbuilder",                   "2.11.5"
 gem "puma",                       "5.6.4"
 gem "bootsnap",                   "1.12.0", require: false
+gem "html-pipeline", "~> 2.14"
 
 group :development, :test do
   gem "sqlite3", "1.4.2"
@@ -65,3 +66,6 @@ gem "redis", "~> 5.0"
 
 # gem "rubocop", "~> 1.59"
 
+
+gem "thredded", "~> 1.1"
+gem "gemoji", "~> 4.1"
